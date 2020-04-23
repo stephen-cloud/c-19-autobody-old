@@ -1,0 +1,5 @@
+type Part @model {
+  id: ID!
+  description: String!
+  price: Float
+}
