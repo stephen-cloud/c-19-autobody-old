@@ -6,7 +6,7 @@ We're going to add code to one of the pages—vehicles—to add a vehicle and li
 yarn add aws-amplify @aws-amplify/ui-react
 ```
 
-We're mnot going to use these right off the bat, but let's do it while we're thinking of it.
+We're not going to use these right off the bat, but let's do it while we're thinking of it.
 
 ## A little layout
 
