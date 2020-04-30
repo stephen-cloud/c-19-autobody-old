@@ -1,0 +1,19 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#083608",
+        "titleBar.activeBackground": "#0B4B0C",
+        "titleBar.activeForeground": "#F3FDF3"
+    },
+    "cSpell.enableFiletypes": [
+        "markdown"
+    ],
+    "cSpell.words": [
+        "autobody",
+        "covid",
+        "unregister"
+    ],
+    "cSpell.ignoreWords": [
+        "uuids",
+        "uuidv"
+    ]
+}

@@ -1,5 +1,5 @@
 {
-    "AppSyncApiName": "client",
+    "AppSyncApiName": "c19autobody",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
     "DynamoDBEnableServerSideEncryption": "false"
 }

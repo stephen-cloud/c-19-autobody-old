@@ -2,18 +2,20 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateVehicleInput = {
   id?: string | null,
-  name: string,
-  description?: string | null,
+  make: string,
+  model: string,
+  mileage?: number | null,
 };
 
-export type ModelTodoConditionInput = {
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+export type ModelVehicleConditionInput = {
+  make?: ModelStringInput | null,
+  model?: ModelStringInput | null,
+  mileage?: ModelIntInput | null,
+  and?: Array< ModelVehicleConditionInput | null > | null,
+  or?: Array< ModelVehicleConditionInput | null > | null,
+  not?: ModelVehicleConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -56,23 +58,37 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type UpdateTodoInput = {
-  id: string,
-  name?: string | null,
-  description?: string | null,
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
-export type DeleteTodoInput = {
+export type UpdateVehicleInput = {
+  id: string,
+  make?: string | null,
+  model?: string | null,
+  mileage?: number | null,
+};
+
+export type DeleteVehicleInput = {
   id?: string | null,
 };
 
-export type ModelTodoFilterInput = {
+export type ModelVehicleFilterInput = {
   id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
+  make?: ModelStringInput | null,
+  model?: ModelStringInput | null,
+  mileage?: ModelIntInput | null,
+  and?: Array< ModelVehicleFilterInput | null > | null,
+  or?: Array< ModelVehicleFilterInput | null > | null,
+  not?: ModelVehicleFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -91,103 +107,111 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type CreateVehicleMutationVariables = {
+  input: CreateVehicleInput,
+  condition?: ModelVehicleConditionInput | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo:  {
-    __typename: "Todo",
+export type CreateVehicleMutation = {
+  createVehicle:  {
+    __typename: "Vehicle",
     id: string,
-    name: string,
-    description: string | null,
+    make: string,
+    model: string,
+    mileage: number | null,
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdateVehicleMutationVariables = {
+  input: UpdateVehicleInput,
+  condition?: ModelVehicleConditionInput | null,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo:  {
-    __typename: "Todo",
+export type UpdateVehicleMutation = {
+  updateVehicle:  {
+    __typename: "Vehicle",
     id: string,
-    name: string,
-    description: string | null,
+    make: string,
+    model: string,
+    mileage: number | null,
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type DeleteVehicleMutationVariables = {
+  input: DeleteVehicleInput,
+  condition?: ModelVehicleConditionInput | null,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo:  {
-    __typename: "Todo",
+export type DeleteVehicleMutation = {
+  deleteVehicle:  {
+    __typename: "Vehicle",
     id: string,
-    name: string,
-    description: string | null,
+    make: string,
+    model: string,
+    mileage: number | null,
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetVehicleQueryVariables = {
   id: string,
 };
 
-export type GetTodoQuery = {
-  getTodo:  {
-    __typename: "Todo",
+export type GetVehicleQuery = {
+  getVehicle:  {
+    __typename: "Vehicle",
     id: string,
-    name: string,
-    description: string | null,
+    make: string,
+    model: string,
+    mileage: number | null,
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type ListVehiclesQueryVariables = {
+  filter?: ModelVehicleFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos:  {
-    __typename: "ModelTodoConnection",
+export type ListVehiclesQuery = {
+  listVehicles:  {
+    __typename: "ModelVehicleConnection",
     items:  Array< {
-      __typename: "Todo",
+      __typename: "Vehicle",
       id: string,
-      name: string,
-      description: string | null,
+      make: string,
+      model: string,
+      mileage: number | null,
     } | null > | null,
     nextToken: string | null,
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo:  {
-    __typename: "Todo",
+export type OnCreateVehicleSubscription = {
+  onCreateVehicle:  {
+    __typename: "Vehicle",
     id: string,
-    name: string,
-    description: string | null,
+    make: string,
+    model: string,
+    mileage: number | null,
   } | null,
 };
 
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo:  {
-    __typename: "Todo",
+export type OnUpdateVehicleSubscription = {
+  onUpdateVehicle:  {
+    __typename: "Vehicle",
     id: string,
-    name: string,
-    description: string | null,
+    make: string,
+    model: string,
+    mileage: number | null,
   } | null,
 };
 
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo:  {
-    __typename: "Todo",
+export type OnDeleteVehicleSubscription = {
+  onDeleteVehicle:  {
+    __typename: "Vehicle",
     id: string,
-    name: string,
-    description: string | null,
+    make: string,
+    model: string,
+    mileage: number | null,
   } | null,
 };

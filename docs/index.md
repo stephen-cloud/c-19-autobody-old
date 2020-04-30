@@ -1,114 +1,22 @@
-# What's all this then?
+Here is the full documentation for creating the C-19 Autobody sample application in TBD.
 
-Here's a TL;DR for the series of stories here (TBD). 
+Why C-19 Autobody? Well, I was laid off from my company as a result of COVID-19. Sales being down. A lot. So between talking to recruiters and having interviews, I learned lots of things I didn't know and put them together. 
 
-This are just the basic recipes. See the stories for all the details.
+Here's are the features and technologies we're using to implement them.
 
-# You'll need these things to get started
+| Feature | Technology |
+| --- | --- |
+| A type safe(r) programming language | TypeScript |
+| A User Interface | React Material |
+| Sign-up, sign-in, forgot password | AWS Amplify Authentication |
+| A back-end API | GraphQL schema definition + AWS Amplify GraphQL API |
+| A database | AWS Amplify API + AWS DynamoDB |
+| Subscribe to data changes; handle off-line edits | AWS AppSync | 
 
-## `yarn` package manager
+## The upshot
 
-See these instructions
+After you follow all the steps, you'll have a React Material web application backed by a GraphQL backend in AWS. The application manages the basics of an Autobody shop
 
-```
-https://classic.yarnpkg.com/en/docs/install
-```
+ - ... TDB
 
-## AWS account
-
-```
-zzz
-```
-
-### AWS profile
-
-```
-xxx
-```
-
-# Create skeleton React application
-
-```
-yarn create react-app my-app --template typescript
-```
-
-```
-yarn start
-```
-
-# Make it an AWS Amplify app
-
-See
-
-```
-https://docs.amplify.aws/start/q/integration/react
-```
-
-```
-amplify init
-```
-
-```
-amplify status
-```
-
-shows nothing much to do. 
-
-```
-yarn start
-```
-still works with any luck. (You can do this after every step to make sure you're following along.)
-
-Add AWS Amplify and React dependencies
-
-```
-yarn add aws-amplify @aws-amplify/ui-react
-```
-
-# Make it a super simple React Material app
-
-```
-yarn add @material-ui/core
-```
-
-Replace `App.tsx` with this
-
-```
-import React from 'react';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-
-function App() {
-  return (
-    <AppBar>
-      <Toolbar>
-        <Typography variant="h4" >Welcome to C-19 Autobody</Typography>
-      </Toolbar>
-    </AppBar>
-  );
-}
-
-export default App;
-```
-
-# Create a back-end application
-
-```
-amplify add api
-```
-
-```
-amplify push
-```
-
-## Update the schema to be something about Autobody shops
-
-Replace the contents of `amplify/backend/api/client/schema.graphql` with
-
-```
-type Part @model {
-  id: ID!
-  description: String!
-  price: Float
-}
-```
-
+The application is only a demo: It doesn't actually fix cars.

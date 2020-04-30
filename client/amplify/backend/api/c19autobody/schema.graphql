@@ -1,0 +1,6 @@
+type Vehicle @model {
+  id: ID!
+  make: String!
+  model: String!
+  mileage: Int
+}

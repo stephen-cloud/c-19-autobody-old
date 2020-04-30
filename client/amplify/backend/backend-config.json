@@ -1,6 +1,6 @@
 {
 	"api": {
-		"client": {
+		"c19autobody": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {

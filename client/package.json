@@ -1,10 +1,10 @@
 {
-  "name": "client",
+  "name": "c-19-2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^0.2.3",
-    "@material-ui/core": "^4.9.11",
+    "@aws-amplify/ui-react": "^0.2.4",
+    "@material-ui/core": "^4.9.12",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -12,9 +12,11 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "aws-amplify": "^3.0.8",
+    "@types/react-router-dom": "^5.1.5",
+    "aws-amplify": "^3.0.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },

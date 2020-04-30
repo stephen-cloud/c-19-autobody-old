@@ -1,114 +1,44 @@
-# What's all this then?
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Here's a TL;DR for the series of stories here (TBD). 
+## Available Scripts
 
-This are just the basic recipes. See the stories for all the details.
+In the project directory, you can run:
 
-# You'll need these things to get started
+### `yarn start`
 
-## `yarn` package manager
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-See these instructions
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-```
-https://classic.yarnpkg.com/en/docs/install
-```
+### `yarn test`
 
-## AWS account
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```
-zzz
-```
+### `yarn build`
 
-### AWS profile
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```
-xxx
-```
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-# Create skeleton React application
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```
-yarn create react-app my-app --template typescript
-```
+### `yarn eject`
 
-```
-yarn start
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-# Make it an AWS Amplify app
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-See
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-```
-https://docs.amplify.aws/start/q/integration/react
-```
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-```
-amplify init
-```
+## Learn More
 
-```
-amplify status
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-shows nothing much to do. 
-
-```
-yarn start
-```
-still works with any luck. (You can do this after every step to make sure you're following along.)
-
-Add AWS Amplify and React dependencies
-
-```
-yarn add aws-amplify @aws-amplify/ui-react
-```
-
-# Make it a super simple React Material app
-
-```
-yarn add @material-ui/core
-```
-
-Replace `App.tsx` with this
-
-```
-import React from 'react';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-
-function App() {
-  return (
-    <AppBar>
-      <Toolbar>
-        <Typography variant="h4" >Welcome to C-19 Autobody</Typography>
-      </Toolbar>
-    </AppBar>
-  );
-}
-
-export default App;
-```
-
-# Create a back-end application
-
-```
-amplify add api
-```
-
-```
-amplify push
-```
-
-## Update the schema to be something about Autobody shops
-
-Replace the contents of `amplify/backend/api/client/schema.graphql` with
-
-```
-type Part @model {
-  id: ID!
-  description: String!
-  price: Float
-}
-```
-
+To learn React, check out the [React documentation](https://reactjs.org/).
