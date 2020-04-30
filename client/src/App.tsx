@@ -9,17 +9,18 @@ import Parts from './Parts';
 import WorkOrders from './WorkOrders';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: theme.spacing(15, 3, 0, 3),
-  },
+  content: {
+      // top, right, bottom, left
+      margin: theme.spacing(2, 2, 0, 2)
+  }
 }));
 
 function App() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar color="inherit">
+    <>
+      <AppBar color="inherit" position="static" >
         <Toolbar>
           <Typography variant="h4" >Welcome to C-19 Autobody</Typography>
         </Toolbar>
@@ -33,17 +34,19 @@ function App() {
         </div>
       </AppBar>
 
-      <main>
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/vehicles" component={Vehicles} />
-          <Route path="/owners" component={Owners} />
-          <Route path="/services" component={Services} />
-          <Route path="/parts" component={Parts} />
-          <Route path="/workorders" component={WorkOrders} />
-        </Switch>
-      </main>
-    </div>
+      <div className={classes.content}>
+        <main>
+          <Switch>
+            <Route path="/" component={Home} exact />
+            <Route path="/vehicles" component={Vehicles} />
+            <Route path="/owners" component={Owners} />
+            <Route path="/services" component={Services} />
+            <Route path="/parts" component={Parts} />
+            <Route path="/workorders" component={WorkOrders} />
+          </Switch>
+        </main>
+      </div>
+    </>
   );
 }
 

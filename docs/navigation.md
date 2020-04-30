@@ -9,17 +9,12 @@ Replace `App.tsx` with
 
 ```typescript
 import React from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button
-} from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 
 function App() {
   return (
     <>
-      <AppBar color="inherit">
+      <AppBar color="inherit" position="static">
         <Toolbar>
           <Typography variant="h4" >Welcome to C-19 Autobody</Typography>
         </Toolbar>
@@ -113,28 +108,6 @@ We'll need a few more imports. See the complete `App.tsx` in the upshot below.
 
 Try it with `yarn start`.
 
-Wait what? 
-
-Why can't I see the stubs the text of the stubs? Here's a clue: Change one of the subs to be taller. Like 
-
-```typescript
-function Home() {
-    return (
-        <>
-            <Typography variant="h3">Home</Typography>
-            <Typography variant="h3">Home</Typography>
-            <Typography variant="h3">Home</Typography>
-            <Typography variant="h3">Home</Typography>
-            <Typography variant="h3">Home</Typography>
-            <Typography variant="h3">Home</Typography>
-            <Typography variant="h3">Home</Typography>
-        </>
-    );
-}
-```
-
-We can see the bottom 5 plus a sliver headers. We're going to fix this ugliness in the next chapter.
-
 ## The upshot
 
 After all our changes, here's where we ended up.
@@ -190,7 +163,7 @@ import WorkOrders from './WorkOrders';
 function App() {
   return (
     <>
-      <AppBar color="inherit">
+      <AppBar color="inherit" position="static">
         <Toolbar>
           <Typography variant="h4" >Welcome to C-19 Autobody</Typography>
         </Toolbar>

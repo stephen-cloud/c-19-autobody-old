@@ -35,10 +35,8 @@ theme:
 # Plugins
 plugins:
   - search
-  - minify:
-      minify_html: true
 
-# Extensions
+  # Extensions
 markdown_extensions:
     - toc:
         permalink: true
@@ -60,6 +58,7 @@ nav:
         - Add AWS Amplify: amplify.md
     - 4. Connect the UI:
         - Prepare the UI: prepare-ui.md
+        - Add a table: add-table-view.md
         - Connect to the back-end: connecttobackend.md
     - Fine print: 
         - Release notes: releasenotes.md

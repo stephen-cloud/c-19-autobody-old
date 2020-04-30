@@ -14,7 +14,7 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 function App() {
   return (
-    <AppBar color="inherit">
+    <AppBar color="inherit" position="static">
       <Toolbar>
         <Typography variant="h4" >Welcome to C-19 Autobody</Typography>
       </Toolbar>

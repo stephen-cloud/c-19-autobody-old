@@ -17,7 +17,7 @@ export default awsmobile;
 
 Let Amplify maintain this file just like it says.
 
-## Configure Amplify
+## Initialize Amplify
 
 We need to import and initialize Amplify with this. We only need to do it once, so let's put it in `index.tsx`.
 
