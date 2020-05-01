@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, makeStyles } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Vehicles from './Vehicles';
@@ -7,11 +7,12 @@ import Owners from './Owners';
 import Services from './Services';
 import Parts from './Parts';
 import WorkOrders from './WorkOrders';
+import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   content: {
-      // top, right, bottom, left
-      margin: theme.spacing(2, 2, 0, 2)
+    // top, right, bottom, left
+    margin: theme.spacing(2, 2, 0, 2)
   }
 }));
 
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <>
-      <AppBar color="inherit" position="static" >
+      <AppBar color="inherit" position="static">
         <Toolbar>
           <Typography variant="h4" >Welcome to C-19 Autobody</Typography>
         </Toolbar>

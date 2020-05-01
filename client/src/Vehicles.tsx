@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Table, TableHead, TableRow, TableCell, TableBody, Grid } from '@material-ui/core';
 import { Vehicle } from './models';
 import { uuid } from 'uuidv4';
+import { DataStore, SubscriptionMessage } from '@aws-amplify/datastore';
 
 function Vehicles() {
-    const [vehicles, setVehicles] = React.useState<Vehicle[]>([])
+    const [vehicles, setVehicles] = React.useState<Vehicle[]>([]);
+
+    async function initialState() {
+        const queryResult = await DataStore.query(Vehicle);
+
+        setVehicles(queryResult);
+    };
+
+    function subscriber(subscriptionMessage: SubscriptionMessage<Vehicle>) {
+        console.log('subscriptionMessage', subscriptionMessage);
+
+        DataStore
+            .query(Vehicle)
+            .then(setVehicles)
+            .catch(console.error);
+    }
+
+    useEffect(() => {
+        initialState();
+
+        const subscription = DataStore
+            .observe(Vehicle)
+            .subscribe(subscriber);
+
+        return () => { subscription.unsubscribe(); };
+    }, []);
 
     function addVehicle() {
         const make = uuid();
@@ -12,47 +38,43 @@ function Vehicles() {
         const mileage = Math.floor(Math.random() * 100000) + 1
         const vehicle = new Vehicle({ make, model, mileage });
 
-        setVehicles([...vehicles, vehicle]);
+        DataStore.save(vehicle);
     }
 
     function onClick(event: React.MouseEvent) {
-        console.log('event', event);
-
         addVehicle();
 
         event.preventDefault();
     }
 
     return (
-        <>
-            <Grid container spacing={1}>
-                <Grid item xs={12} sm={3}>
-                    <Button onClick={onClick}>Add vehicle</Button>
-                </Grid>
-                <Grid item xs={12} sm={9}>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Make</TableCell>
-                                <TableCell>Model</TableCell>
-                                <TableCell>Mileage</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {
-                                vehicles.map((vehicle) => (
-                                    <TableRow>
-                                        <TableCell>{vehicle.make}</TableCell>
-                                        <TableCell>{vehicle.model}</TableCell>
-                                        <TableCell align="right">{vehicle.mileage}</TableCell>
-                                    </TableRow>
-                                ))
-                            }
-                        </TableBody>
-                    </Table>
-                </Grid>
+        <Grid container spacing={2}>
+            <Grid item xs={12} sm={3}>
+                <Button onClick={onClick}>Add vehicle</Button>
             </Grid>
-        </>
+            <Grid item xs={12} sm={9}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Make</TableCell>
+                            <TableCell>Model</TableCell>
+                            <TableCell>Mileage</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            vehicles.map((vehicle) => (
+                                <TableRow>
+                                    <TableCell>{vehicle.make}</TableCell>
+                                    <TableCell>{vehicle.model}</TableCell>
+                                    <TableCell align="right">{vehicle.mileage}</TableCell>
+                                </TableRow>
+                            ))
+                        }
+                    </TableBody>
+                </Table>
+            </Grid>
+        </Grid>
     );
 }
 

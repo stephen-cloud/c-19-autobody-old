@@ -7,6 +7,7 @@ export type CreateVehicleInput = {
   make: string,
   model: string,
   mileage?: number | null,
+  _version?: number | null,
 };
 
 export type ModelVehicleConditionInput = {
@@ -75,10 +76,12 @@ export type UpdateVehicleInput = {
   make?: string | null,
   model?: string | null,
   mileage?: number | null,
+  _version?: number | null,
 };
 
 export type DeleteVehicleInput = {
   id?: string | null,
+  _version?: number | null,
 };
 
 export type ModelVehicleFilterInput = {
@@ -119,6 +122,9 @@ export type CreateVehicleMutation = {
     make: string,
     model: string,
     mileage: number | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -134,6 +140,9 @@ export type UpdateVehicleMutation = {
     make: string,
     model: string,
     mileage: number | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -149,6 +158,34 @@ export type DeleteVehicleMutation = {
     make: string,
     model: string,
     mileage: number | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type SyncVehiclesQueryVariables = {
+  filter?: ModelVehicleFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncVehiclesQuery = {
+  syncVehicles:  {
+    __typename: "ModelVehicleConnection",
+    items:  Array< {
+      __typename: "Vehicle",
+      id: string,
+      make: string,
+      model: string,
+      mileage: number | null,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+    } | null > | null,
+    nextToken: string | null,
+    startedAt: number | null,
   } | null,
 };
 
@@ -163,6 +200,9 @@ export type GetVehicleQuery = {
     make: string,
     model: string,
     mileage: number | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -181,8 +221,12 @@ export type ListVehiclesQuery = {
       make: string,
       model: string,
       mileage: number | null,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
     } | null > | null,
     nextToken: string | null,
+    startedAt: number | null,
   } | null,
 };
 
@@ -193,6 +237,9 @@ export type OnCreateVehicleSubscription = {
     make: string,
     model: string,
     mileage: number | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -203,6 +250,9 @@ export type OnUpdateVehicleSubscription = {
     make: string,
     model: string,
     mileage: number | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };
 
@@ -213,5 +263,8 @@ export type OnDeleteVehicleSubscription = {
     make: string,
     model: string,
     mileage: number | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
   } | null,
 };

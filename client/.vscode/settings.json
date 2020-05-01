@@ -1,11 +1,7 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.background": "#0A2B62",
-        "titleBar.activeBackground": "#0E3C89",
-        "titleBar.activeForeground": "#FAFCFF"
-    },
-    "cSpell.ignoreWords": [
-        "autobody",
-        "workorders"
-    ]
+        "activityBar.background": "#053428",
+        "titleBar.activeBackground": "#074938",
+        "titleBar.activeForeground": "#F0FEFA"
+    }
 }

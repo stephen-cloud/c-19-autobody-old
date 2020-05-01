@@ -55,7 +55,7 @@ function Home() {
 export default Home;
 ```
 
-Do the same for `Vehicles`, `Owners`, `Services`, `Parts`, and `WorkOrders`.
+Do the same for Vehicles, Owners, Services, Parts, and WorkOrders. For Work Orders, call the file `WorkOrders.tsx`.
 
 !!! note
     Remember there are 3 places you need to change the name of each component.
@@ -107,6 +107,9 @@ Replace the `<Button>`s in the `<AppBar>` with `<Link>`s and the bindings from r
 We'll need a few more imports. See the complete `App.tsx` in the upshot below.
 
 Try it with `yarn start`.
+
+!!! warning
+    We know. It looks dreadful right now. We're going to clean it up in a bit.
 
 ## The upshot
 
@@ -211,4 +214,4 @@ function Home() {
 export default Home;
 ```
 
-For Work Orders, call the file `WorkOrders.tsx`.
+As we pointed out above, it's not going to win any design awards. Keep going.

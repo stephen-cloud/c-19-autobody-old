@@ -1,5 +1,5 @@
 projects:
-  c19autobody:
+  client:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.ts

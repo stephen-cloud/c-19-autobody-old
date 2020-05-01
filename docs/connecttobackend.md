@@ -1,3 +1,16 @@
+!!! error
+    Where should we put this? What are the responses?
+
+```shell
+amplify update api
+amplify push
+```
+
+!!! note
+    We're going to keep the state as-is for now. You'll see that the way we use it is inefficient because we're fetching all vehicles every time we make a change. The basic table provided by React Material does not provide pagination with lazy loading. We'll get to a solution for this in a bit. But it's a bit complicated and might throw us off the scent if we do that now.
+
+    If you're curious, we're going to show you how to use Material Table, <https://material-table.com> for lots of table goodness.
+
 If you're sharp-eyed, you notice Amplify created configuration in `aws-exports.js`, which contains something like.
 
 ```javascript
@@ -11,7 +24,6 @@ const awsmobile = {
     "aws_appsync_apiKey": "xxx"
 };
 
-
 export default awsmobile;
 ```
 
@@ -19,7 +31,7 @@ Let Amplify maintain this file just like it says.
 
 ## Initialize Amplify
 
-We need to import and initialize Amplify with this. We only need to do it once, so let's put it in `index.tsx`.
+We need to import and initialize Amplify with the configuration in `awsmobile`. We only need to do it once, so let's put it in `index.tsx`.
 
 !!! note
     This goes in `index.tsx`.
@@ -31,52 +43,85 @@ import amplify_configuration from './aws-exports';
 Amplify.configure(amplify_configuration);
 ```
 
-## Generate model definitions from GraphQL schema
-
-```shell
-amplify codegen models
-```
-
-creates a new folder `models` with interface definitions for everything defined in `schema.graphql`.
-
-We lied about `DTOs.ts` being useful. You can delete that file now because we're getting the data classes from our generated code instead.
-
-Now import the `Vehicle` interface from the generated model.
-
-!!! note
-    This is in `Vehicles.tsx`.
-
-```typescript
-import { Vehicle } from './models';
-```
-
-!!! warning
-    TBD: Did we add the ID field yet?
-
-We have to create a new Vehicle instance in a slightly different way. This is because the model now has as ID field. DataStore runtime creates that. Generated models have a constructor that does not require it.
-
-```typescript
-const vehicle = new Vehicle({ make, model, mileage });
-```
-
-Try it. Behaves as before, right?
-
 ## Use the DataStore API in `Vehicles.tsx`
 
 The `DataStore` API is an alternative to using the raw GraphQL API, which can get a bit fiddly to get right at first.
 
-!!! note
-    We're going to keep the state as-is for now. You'll see that the way we use it is inefficient because we're fetching all vehicles every time we make a change. The basic table provided by React Material does not provide pagination with lazy loading. We'll get to a solution for this in a bit. But it's a bit complicated and might throw us off the scent if we do that now.
-
-    If you're curious, we'll show you how to use Material Table, <https://material-table.com>
-
-Import it.
+Now import it.
 
 ```typescript
 import { DataStore } from '@aws-amplify/datastore';
 ```
 
-We're going to _subscribe_ to changes and reload all the vehicles every time we get an event. We're not going to use `setVehicles()` in the button handlers themselves. Instead we call the `DataStore` API and let the subscription handler be the only place that calls `setVehicles()` 
+!!! error
+    Really incomplete from here on
+
+!!! error
+    In particular, we must figure out the real type of the arg to handleQuery and use that in the state
+
+## Use `DataStore` to query the data
+
+!!! note
+    The default query is all objects. We can supply predicates and pagination in the query. We'll get to that when we use <https://material-table.com/#/>, which lazy loads as it paginates.
+
+We use `setVehicles(...)` as before. But this time with the results of the DataStore query.
+
+```typescript
+    function handleQuery(queryResult: Vehicle[]) {
+        setVehicles(queryResult);
+    }
+```
+
+## Handle subscription events
+
+We're going to subscribe to changes in the back-end data and reload all the vehicles every time we get an event. We're not going to use `setVehicles()` in the button handlers themselves. Instead we call the `DataStore` API and let the subscription handler now be the only place that calls `setVehicles()`.
+
+This is AWS AppSync at work. See <https://docs.aws.amazon.com/appsync/index.html>.
+
+```typescript
+import { DataStore, SubscriptionMessage } from '@aws-amplify/datastore';
+```
+
+```typescript
+    function subscriber(subscriptionMessage: SubscriptionMessage<Vehicle>) {
+        console.log('subscriptionMessage', subscriptionMessage);
+
+        DataStore.query(Vehicle)
+            .then(handleQuery)
+            .catch(console.error);
+    }
+```
+
+## Observe changes and subscribe to them
+
+```typescript
+import React, { useEffect } from 'react';
+```
+
+```typescript
+    useEffect(() => {
+        const subscription = DataStore
+            .observe(Vehicle)
+            .subscribe(subscriber)
+
+        return () => subscription.unsubscribe()
+    })
+```
 
 Subscription is a great candidate for another React hook, `withEffect()`. Read that as "with side-effect". You can find out more here: <https://reactjs.org/docs/hooks-effect.html>. 
 
+So now we have
+
+| What | How |
+| --- | --- |
+| `<Button>` click handler | `onClick()` on `<Button>` definition |
+| Adding a (random) vehicle | `addVehicle()` in `onClick()` | 
+| A subscription to changes in the Vehicle database | `userEffect()` |
+| A subscription handler | `subscriber(...)` |
+
+Before we try it out, remember we're saving new vehicle to the database and handling the triggered event
+
+!!! note
+    This probably all seem useless and and unnecessary at the moment. Just wait. Prepare to be astounded.
+
+Let's try it. (`yarn start` as usual.)

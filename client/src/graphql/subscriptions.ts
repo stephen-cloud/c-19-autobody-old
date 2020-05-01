@@ -1,5 +1,5 @@
-// tslint:disable
-// eslint-disable
+/* tslint:disable */
+/* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
 export const onCreateVehicle = /* GraphQL */ `
@@ -9,6 +9,9 @@ export const onCreateVehicle = /* GraphQL */ `
       make
       model
       mileage
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -19,6 +22,9 @@ export const onUpdateVehicle = /* GraphQL */ `
       make
       model
       mileage
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -29,6 +35,9 @@ export const onDeleteVehicle = /* GraphQL */ `
       make
       model
       mileage
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

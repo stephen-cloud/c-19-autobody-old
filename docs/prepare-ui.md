@@ -22,7 +22,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   content: {
-      // top, right, bottom, left
+    // top, right, bottom, left
     margin: theme.spacing(2, 2, 0, 2)
   }
 }));
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 Remember the `theme` argument lets us use spacing from the theme itself. We could use hard-coded pixel sizes, but we'd have to update all those manually every time the theme changes. That would be not only annoying, but in addition your pull request would be rejected and no one on your team will want to go to lunch with you today.
 
-`makeStyles()` returns a function. We get the classNames from the result of calling this function like this
+`makeStyles()` returns a function. We get the classNames from the result of calling this function. And we use it referencing the class name.
 
 ```typescript
 function App() {
@@ -38,27 +38,32 @@ function App() {
 
   return (
     <>
-      <AppBar color="inherit" position="static" >
-        ...
+      <AppBar color="inherit" position="static">
+        <Toolbar>
+          <Typography variant="h4" >Welcome to C-19 Autobody</Typography>
+        </Toolbar>
+        <div>
+          <Link to="/" component={Button}>Home</Link>
+          ...
+        </div>
       </AppBar>
 
       <div className={classes.content}>
         <main>
+          <Switch>
+            <Route path="/" component={Home} exact />
             ...
+          </Switch>
         </main>
       </div>
     </>
+  );
+}
 ```
 
-We're just using the name of the class here. It's looking better.
+It's looking quite a bit better.
 
 ## Now add some state for the list of vehicles
-
-First let's generate the model code from our `schema.graphql`.
-
-```shell
-amplify codegen models
-```
 
 !!! note
     All this goes in `Vehicles.tsx`
@@ -89,15 +94,18 @@ import { uuid } from 'uuidv4';
 
 # Code to update the list of vehicles
 
-Add a function to add a vehicle to the `vehicles` state inside `function Vehicles() {`,
+A new function, `addVehicle()` adds a vehicle to the `vehicles` state. This goes
 
 ```typescript
+function Vehicles() {
+    const [vehicles, setVehicles] = React.useState<Vehicle[]>([]);
+
     function addVehicle() {
         const make = uuid();
         const model = uuid();
         const mileage = Math.floor(Math.random() * 100000) + 1 
         const vehicle = new Vehicle({ make, model, mileage });
-    
+
         setVehicles([...vehicles, vehicle]);
     }
 ```
@@ -105,7 +113,7 @@ Add a function to add a vehicle to the `vehicles` state inside `function Vehicle
 !!! note
     The `Vehicle` class contains metadata that Amplify runtime uses for persistence. This is out-of-bounds for us to update directly. However all persistent classes derived from `schema.graphql`—including our `Vehicle` class—includes a constructor with just our fields except `id`, which is considered part of the metadata.
 
-Now a handler for a `<Button onClick{...}>` handler. This also needs to be inside the main function.
+Add a `<Button onClick{...}>` handler. This also needs to be inside the main function.
 
 ```typescript
     function onClick(event: React.MouseEvent) {
@@ -119,15 +127,11 @@ Now a handler for a `<Button onClick{...}>` handler. This also needs to be insid
 
 The `event.preventDefault();` is necessary because React decorates native DOM events and we don't want the browser to refresh or reload the window with the underlying event.
 
-Instead of the header, add a `<Button>` and wire up the `onclick()` handler.
+Add a `<Button>` and wire up the `onclick()` handler, and replace the existing `<Typography>` element with some JSON.
 
 ```typescript
-    return (
-        <Button onClick={onClick}>Add vehicle</Button>
-    );
+import { Typography, Button } from '@material-ui/core';
 ```
-
-Try it out. Nice. Now there's a button "ADD VEHICLE". But what is it doing? Let's print it out. Make the return statement
 
 ```typescript
     return (
@@ -138,10 +142,47 @@ Try it out. Nice. Now there's a button "ADD VEHICLE". But what is it doing? Let'
     );
 ```
 
-Try it now. Oh yeah.
+Try it out. Nice. Now there's a button "ADD VEHICLE" and some JSON for all the vehicles we're adding.
 
 ## The upshot
 
-!!! error
-    Write the upshot
-    
+We make a very primitive component that updates and displays state. 
+
+`Vehicles.tsx` is now
+
+```typescript
+import React from 'react';
+import { Typography, Button } from '@material-ui/core';
+import { Vehicle } from './models';
+import { uuid } from 'uuidv4';
+
+function Vehicles() {
+    const [vehicles, setVehicles] = React.useState<Vehicle[]>([]);
+
+    function addVehicle() {
+        const make = uuid();
+        const model = uuid();
+        const mileage = Math.floor(Math.random() * 100000) + 1
+        const vehicle = new Vehicle({ make, model, mileage });
+
+        setVehicles([...vehicles, vehicle]);
+    }
+
+    function onClick(event: React.MouseEvent) {
+        console.log('event', event);
+
+        addVehicle();
+
+        event.preventDefault();
+    }
+
+    return (
+        <>
+            <Button onClick={onClick}>Add vehicle</Button>
+            <Typography>{JSON.stringify(vehicles)}</Typography>
+        </>
+    );
+}
+
+export default Vehicles;
+```

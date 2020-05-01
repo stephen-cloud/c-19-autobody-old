@@ -38,13 +38,14 @@ Replace the `return` statement with
 
 Let's unpack that.
 
-We need `<>` ... `</>` around all the elements because there must be only one top-level element. We have two: The `<Button>` and the `<Table>`.
+We need `<>` ... `</>` around all the elements because as there can only be one top-level element. We have two: The `<Button>` and the `<Table>`.
 
 !!! note
     The table definition is the analog of basic HTML tables with a head and a body. 
 
-!!! note
-    The `{` ... `}` inside the `<TableBody>` lets us run display logic, in this case loop over the vehicles and generate rows. There must be only one statement inside `{` ... `}` and that code must return React elements.
+The `{` ... `}` inside the `<TableBody>` lets us run display logic, in this case loop over the vehicles and generate table rows. There must be only one statement inside `{` ... `}` and that code must return React elements.
+
+Try it. Not bad. But there's more.
 
 ## Layout likes to be on a `<Grid>`
 
@@ -54,16 +55,22 @@ The layout of the page without a grid is actually OK. If we had lots of elements
 
 Another thing's irksome. The button's always on a line on its own, even when the page is wide enough to have the button on the left and the table in the remaining space. There's room. Let's do it.
 
-Add a `<Grid container spacing={2}>` around the `<Button>` and `<Table>` elements. 
+Add a `<Grid>` with some spacing around the `<Button>` and `<Table>` elements. 
+
+```typescript
+import { Grid } from '@material-ui/core';
+```
 
 ```typescript
         <Grid container spacing={2}>
             <Button onClick={onClick}>Add vehicle</Button>
             <Table>
                 ...
+            </Table>
+        </Grid>
 ```
 
-Refresh. Not much difference. That's because a grid container lays out grid items and we don't have any yet.
+Refresh. Not much difference. That's because a `<Grid container>` lays out `<Grid item>`s and we don't have any yet.
 
 Add the two items inside the container. 
 
@@ -77,18 +84,16 @@ Add the two items inside the container.
                     ...
 ```
 
-This lays out the button and table items side-by-side. But nothing interesting happens when we resize the screen.
+This lays out the button and table items side-by-side. Try resizing the screen. Things move around as the screen size changes.
 
-We want to lay out grid items in an actual grid. The default for `<Grid item>` is to flow items. We don't want that.
+We want to lay out grid items in an actual grid. We saw the default for `<Grid item>` is to flow items. That's really not very gridy.
 
-We can specify _breakpoints_ for items (any number of `xs`, `sm`, `md`, `lg`, and `xl` values) with a column span, which can be `1` (1 column) through `12` (the whole row.) Each breakpoint defines the behavior of  responsive design, the way page layout changes to accommodate different screen sizes.
+We can specify _breakpoint values_ for items (any number of `xs`, `sm`, `md`, `lg`, and `xl` values) with a column span, which can be `1` (1 column) through `12` (the whole row.) Each breakpoint defines the behavior of responsive design, the way page layout changes to accommodate different screen sizes.
 
-!!! error
-    Find link TBD. What are sizes of xs ...?
+!!! info
+    See <https://material-ui.com/customization/breakpoints/> for the details.
 
-    Link to responsive design
-
-So
+So with all that, now
 
 ```typescript
             <Grid container spacing={2}>
@@ -103,12 +108,12 @@ So
             </Grid>
 ```
 
-will layout both the button and the table full width if the screen size is `xs` and side-by-side if the device resolution is `sm` or above. 
+will layout both the button and the table full width if the screen size is less than 600px. and side-by-side if the size if 600px or above.
 
-Try waggling the bottom-right corner of the browser around to see the button and table move relative to each other. This is responsive design at work.
+Try waggling the bottom-right corner of the browser around to see the button and table move relative to each other. This is responsive design at work with defined columns.
 
 !!! note
-    `<Grid container spacing={??}>` adds spacing between items, which are rows. So it does not affect margins of the grid container itself. You can try different values for the padding and see this work.
+    `<Grid container spacing={??}>` adds spacing between cells of the grid: It does not affect margins of the grid container itself. You can try different values for the padding and see this work.
 
 ## The upshot
 
@@ -125,7 +130,7 @@ import { Vehicle } from './models';
 import { uuid } from 'uuidv4';
 
 function Vehicles() {
-    const [vehicles, setVehicles] = React.useState<Vehicle[]>([])
+    const [vehicles, setVehicles] = React.useState<Vehicle[]>([]);
 
     function addVehicle() {
         const make = uuid();
@@ -145,37 +150,40 @@ function Vehicles() {
     }
 
     return (
-        <>
-            <Grid container spacing={1}>
-                <Grid item xs={12} sm={3}>
-                    <Button onClick={onClick}>Add vehicle</Button>
-                </Grid>
-                <Grid item xs={12} sm={9}>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Make</TableCell>
-                                <TableCell>Model</TableCell>
-                                <TableCell>Mileage</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {
-                                vehicles.map((vehicle) => (
-                                    <TableRow>
-                                        <TableCell>{vehicle.make}</TableCell>
-                                        <TableCell>{vehicle.model}</TableCell>
-                                        <TableCell align="right">{vehicle.mileage}</TableCell>
-                                    </TableRow>
-                                ))
-                            }
-                        </TableBody>
-                    </Table>
-                </Grid>
+        <Grid container spacing={2}>
+            <Grid item xs={12} sm={3}>
+                <Button onClick={onClick}>Add vehicle</Button>
             </Grid>
-        </>
+            <Grid item xs={12} sm={9}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Make</TableCell>
+                            <TableCell>Model</TableCell>
+                            <TableCell>Mileage</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            vehicles.map((vehicle) => (
+                                <TableRow>
+                                    <TableCell>{vehicle.make}</TableCell>
+                                    <TableCell>{vehicle.model}</TableCell>
+                                    <TableCell align="right">{vehicle.mileage}</TableCell>
+                                </TableRow>
+                            ))
+                        }
+                    </TableBody>
+                </Table>
+            </Grid>
+        </Grid>
     );
 }
 
 export default Vehicles;
+
+
+export default Vehicles;
 ```
+
+Now we're going to integrate the UI we just made with the backend database.
