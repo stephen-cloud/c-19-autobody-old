@@ -49,50 +49,51 @@ The `DataStore` API is an alternative to using the raw GraphQL API, which can ge
 
 Now import it.
 
+!!! note
+    This goes in `Vehicles.tsx`.
+
 ```typescript
 import { DataStore } from '@aws-amplify/datastore';
 ```
 
-!!! error
-    Really incomplete from here on
-
-!!! error
-    In particular, we must figure out the real type of the arg to handleQuery and use that in the state
-
 ## Use `DataStore` to query the data
 
 !!! note
-    The default query is all objects. We can supply predicates and pagination in the query. We'll get to that when we use <https://material-table.com/#/>, which lazy loads as it paginates.
+    The default query is all objects. We can supply predicates and pagination details in the query. We'll get to that when we use <https://material-table.com/#/>, which lazy loads as it paginates.
 
-We use `setVehicles(...)` as before. But this time with the results of the DataStore query.
+We use `setVehicles(...)` as before. But this time with the results of the DataStore query. Here's that function.
 
 ```typescript
-    function handleQuery(queryResult: Vehicle[]) {
-        setVehicles(queryResult);
-    }
+    function fetchAll() {
+        DataStore
+            .query(Vehicle)
+            .then(setVehicles)
+            .catch(console.error);
+    };
 ```
 
 ## Handle subscription events
 
-We're going to subscribe to changes in the back-end data and reload all the vehicles every time we get an event. We're not going to use `setVehicles()` in the button handlers themselves. Instead we call the `DataStore` API and let the subscription handler now be the only place that calls `setVehicles()`.
+We're going to subscribe to changes in the back-end data and reload all the vehicles every time we get an event. 
 
 This is AWS AppSync at work. See <https://docs.aws.amazon.com/appsync/index.html>.
 
-```typescript
-import { DataStore, SubscriptionMessage } from '@aws-amplify/datastore';
-```
+This function is handy for tracking events as we get them.
 
 ```typescript
+import { DataStore, SubscriptionMessage } from '@aws-amplify/datastore';
+...
+
     function subscriber(subscriptionMessage: SubscriptionMessage<Vehicle>) {
         console.log('subscriptionMessage', subscriptionMessage);
 
-        DataStore.query(Vehicle)
-            .then(handleQuery)
-            .catch(console.error);
+        fetchAll();
     }
 ```
 
 ## Observe changes and subscribe to them
+
+Now that we have a functions `fetchAll()` and `subscriber()`, let's put them together in a `withEffect()`. Read that as "with side-effect". You can find out more here: <https://reactjs.org/docs/hooks-effect.html>. 
 
 ```typescript
 import React, { useEffect } from 'react';
@@ -100,28 +101,130 @@ import React, { useEffect } from 'react';
 
 ```typescript
     useEffect(() => {
+        fetchAll();
+
+        function subscriber(subscriptionMessage: SubscriptionMessage<Vehicle>) {
+            console.log('subscriptionMessage', subscriptionMessage);
+    
+            fetchAll();
+        }
+    
         const subscription = DataStore
             .observe(Vehicle)
-            .subscribe(subscriber)
+            .subscribe(subscriber);
 
-        return () => subscription.unsubscribe()
-    })
+        return () => { subscription.unsubscribe(); };
+    }, []);
 ```
 
-Subscription is a great candidate for another React hook, `withEffect()`. Read that as "with side-effect". You can find out more here: <https://reactjs.org/docs/hooks-effect.html>. 
+Now whenever AppSync sends us an update we read the data from DynamoDB and display it.
 
 So now we have
 
 | What | How |
 | --- | --- |
 | `<Button>` click handler | `onClick()` on `<Button>` definition |
-| Adding a (random) vehicle | `addVehicle()` in `onClick()` | 
-| A subscription to changes in the Vehicle database | `userEffect()` |
-| A subscription handler | `subscriber(...)` |
-
-Before we try it out, remember we're saving new vehicle to the database and handling the triggered event
+| Adding a (random) vehicle | `addVehicle()` in `onClick()`, which calls the DataStore to save the new vehicle. | 
+| A subscription event handler | `subscriber()` |
+| A subscriber to changes in the Vehicle database | In `useEffect()` |
 
 !!! note
-    This probably all seem useless and and unnecessary at the moment. Just wait. Prepare to be astounded.
+    I guarantee this all seems totally useless and unnecessary at the moment. 
+    
+    Just wait. Prepare to be astounded.
 
-Let's try it. (`yarn start` as usual.)
+Let's try it anyway. (`yarn start` as usual.)
+
+## Now for the astonishing bit
+
+Open up another browser <http://localhost:3000> and watch what happens when you dd a vehicle.
+
+You just wrote Google docs for cars. 
+
+## The upshot
+
+We configured Amplify. We created an Amplify DataSource observer and subscribed to events from it. We learned just a little about `useEffect()` and glued that all together. We were a bit astonished at what that allowed us to do if we're being honest.
+
+The complete `Vehicles.txt` is
+
+```typescript
+import React, { useEffect } from 'react';
+import { Button, Table, TableHead, TableRow, TableCell, TableBody, Grid } from '@material-ui/core';
+import { Vehicle } from './models';
+import { uuid } from 'uuidv4';
+import { DataStore, SubscriptionMessage } from '@aws-amplify/datastore';
+
+function Vehicles() {
+    const [vehicles, setVehicles] = React.useState<Vehicle[]>([]);
+
+    function fetchAll() {
+        DataStore
+            .query(Vehicle)
+            .then(setVehicles)
+            .catch(console.error);
+    };
+
+    useEffect(() => {
+        fetchAll();
+
+        function subscriber(subscriptionMessage: SubscriptionMessage<Vehicle>) {
+            console.log('subscriptionMessage', subscriptionMessage);
+    
+            fetchAll();
+        }
+    
+        const subscription = DataStore
+            .observe(Vehicle)
+            .subscribe(subscriber);
+
+        return () => { subscription.unsubscribe(); };
+    }, []);
+
+    function addVehicle() {
+        const make = uuid();
+        const model = uuid();
+        const mileage = Math.floor(Math.random() * 100000) + 1
+        const vehicle = new Vehicle({ make, model, mileage });
+
+        DataStore.save(vehicle);
+    }
+
+    function onClick(event: React.MouseEvent) {
+        addVehicle();
+
+        event.preventDefault();
+    }
+
+    return (
+        <Grid container spacing={2}>
+            <Grid item xs={12} sm={3}>
+                <Button onClick={onClick}>Add vehicle</Button>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Make</TableCell>
+                            <TableCell>Model</TableCell>
+                            <TableCell>Mileage</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            vehicles.map((vehicle) => (
+                                <TableRow>
+                                    <TableCell>{vehicle.make}</TableCell>
+                                    <TableCell>{vehicle.model}</TableCell>
+                                    <TableCell align="right">{vehicle.mileage}</TableCell>
+                                </TableRow>
+                            ))
+                        }
+                    </TableBody>
+                </Table>
+            </Grid>
+        </Grid>
+    );
+}
+
+export default Vehicles;
+```

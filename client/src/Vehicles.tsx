@@ -7,24 +7,22 @@ import { DataStore, SubscriptionMessage } from '@aws-amplify/datastore';
 function Vehicles() {
     const [vehicles, setVehicles] = React.useState<Vehicle[]>([]);
 
-    async function initialState() {
-        const queryResult = await DataStore.query(Vehicle);
-
-        setVehicles(queryResult);
-    };
-
-    function subscriber(subscriptionMessage: SubscriptionMessage<Vehicle>) {
-        console.log('subscriptionMessage', subscriptionMessage);
-
+    function fetchAll() {
         DataStore
             .query(Vehicle)
             .then(setVehicles)
             .catch(console.error);
-    }
+    };
 
     useEffect(() => {
-        initialState();
+        fetchAll();
 
+        function subscriber(subscriptionMessage: SubscriptionMessage<Vehicle>) {
+            console.log('subscriptionMessage', subscriptionMessage);
+    
+            fetchAll();
+        }
+    
         const subscription = DataStore
             .observe(Vehicle)
             .subscribe(subscriber);
