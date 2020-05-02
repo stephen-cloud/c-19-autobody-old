@@ -571,7 +571,7 @@
 
 <span class="kr">const</span> <span class="nx">useStyles</span> <span class="o">=</span> <span class="nx">makeStyles</span><span class="p">((</span><span class="nx">theme</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
   <span class="nx">content</span><span class="o">:</span> <span class="p">{</span>
-      <span class="c1">// top, right, bottom, left</span>
+    <span class="c1">// top, right, bottom, left</span>
     <span class="nx">margin</span>: <span class="kt">theme.spacing</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}));</span>
@@ -579,32 +579,38 @@
 
 
 <p>Remember the <code>theme</code> argument lets us use spacing from the theme itself. We could use hard-coded pixel sizes, but we'd have to update all those manually every time the theme changes. That would be not only annoying, but in addition your pull request would be rejected and no one on your team will want to go to lunch with you today.</p>
-<p><code>makeStyles()</code> returns a function. We get the classNames from the result of calling this function like this</p>
+<p><code>makeStyles()</code> returns a function. We get the classNames from the result of calling this function. And we use it referencing the class name.</p>
 <div class="codehilite"><pre><span></span><code><span class="kd">function</span> <span class="nx">App() {</span>
   <span class="kr">const</span> <span class="nx">classes</span> <span class="o">=</span> <span class="nx">useStyles</span><span class="p">();</span>
 
   <span class="k">return</span> <span class="p">(</span>
     <span class="o">&lt;&gt;</span>
-      <span class="o">&lt;</span><span class="nx">AppBar</span> <span class="nx">color</span><span class="o">=</span><span class="s2">&quot;inherit&quot;</span> <span class="nx">position</span><span class="o">=</span><span class="s2">&quot;static&quot;</span> <span class="o">&gt;</span>
-        <span class="p">...</span>
+      <span class="o">&lt;</span><span class="nx">AppBar</span> <span class="nx">color</span><span class="o">=</span><span class="s2">&quot;inherit&quot;</span> <span class="nx">position</span><span class="o">=</span><span class="s2">&quot;static&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Toolbar</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Typography</span> <span class="nx">variant</span><span class="o">=</span><span class="s2">&quot;h4&quot;</span> <span class="o">&gt;</span><span class="nx">Welcome</span> <span class="nx">to</span> <span class="nx">C</span><span class="o">-</span><span class="mi">19</span> <span class="nx">Autobody</span><span class="o">&lt;</span><span class="err">/Typography&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Toolbar&gt;</span>
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Button</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
+          <span class="p">...</span>
+        <span class="o">&lt;</span><span class="err">/div&gt;</span>
       <span class="o">&lt;</span><span class="err">/AppBar&gt;</span>
 
       <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">classes</span><span class="p">.</span><span class="nx">content</span><span class="p">}</span><span class="o">&gt;</span>
         <span class="o">&lt;</span><span class="nx">main</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">Switch</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&quot;/&quot;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Home</span><span class="p">}</span> <span class="nx">exact</span> <span class="o">/&gt;</span>
             <span class="p">...</span>
+          <span class="o">&lt;</span><span class="err">/Switch&gt;</span>
         <span class="o">&lt;</span><span class="err">/main&gt;</span>
       <span class="o">&lt;</span><span class="err">/div&gt;</span>
     <span class="o">&lt;</span><span class="err">/&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 
 
-<p>We're just using the name of the class here. It's looking better.</p>
+<p>It's looking quite a bit better.</p>
 <h2 id="now-add-some-state-for-the-list-of-vehicles">Now add some state for the list of vehicles<a class="headerlink" href="#now-add-some-state-for-the-list-of-vehicles" title="Permanent link">&para;</a></h2>
-<p>First let's generate the model code from our <code>schema.graphql</code>.</p>
-<div class="codehilite"><pre><span></span><code>amplify codegen models
-</code></pre></div>
-
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>All this goes in <code>Vehicles.tsx</code></p>
@@ -630,8 +636,11 @@
 
 
 <h1 id="code-to-update-the-list-of-vehicles">Code to update the list of vehicles<a class="headerlink" href="#code-to-update-the-list-of-vehicles" title="Permanent link">&para;</a></h1>
-<p>Add a function to add a vehicle to the <code>vehicles</code> state inside <code>function Vehicles() {</code>,</p>
-<div class="codehilite"><pre><span></span><code>    <span class="kd">function</span> <span class="nx">addVehicle() {</span>
+<p>A new function, <code>addVehicle()</code> adds a vehicle to the <code>vehicles</code> state. This goes</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span> <span class="nx">Vehicles() {</span>
+    <span class="kr">const</span> <span class="p">[</span><span class="nx">vehicles</span><span class="p">,</span> <span class="nx">setVehicles</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">([]);</span>
+
+    <span class="kd">function</span> <span class="nx">addVehicle() {</span>
         <span class="kr">const</span> <span class="nx">make</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">();</span>
         <span class="kr">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">();</span>
         <span class="kr">const</span> <span class="nx">mileage</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100000</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> 
@@ -646,7 +655,7 @@
 <p class="admonition-title">Note</p>
 <p>The <code>Vehicle</code> class contains metadata that Amplify runtime uses for persistence. This is out-of-bounds for us to update directly. However all persistent classes derived from <code>schema.graphql</code>—including our <code>Vehicle</code> class—includes a constructor with just our fields except <code>id</code>, which is considered part of the metadata.</p>
 </div>
-<p>Now a handler for a <code>&lt;Button onClick{...}&gt;</code> handler. This also needs to be inside the main function.</p>
+<p>Add a <code>&lt;Button onClick{...}&gt;</code> handler. This also needs to be inside the main function.</p>
 <div class="codehilite"><pre><span></span><code>    <span class="kd">function</span> <span class="nx">onClick</span><span class="p">(</span><span class="nx">event</span>: <span class="kt">React.MouseEvent</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
 
@@ -658,14 +667,11 @@
 
 
 <p>The <code>event.preventDefault();</code> is necessary because React decorates native DOM events and we don't want the browser to refresh or reload the window with the underlying event.</p>
-<p>Instead of the header, add a <code>&lt;Button&gt;</code> and wire up the <code>onclick()</code> handler.</p>
-<div class="codehilite"><pre><span></span><code>    <span class="k">return</span> <span class="p">(</span>
-        <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
-    <span class="p">);</span>
+<p>Add a <code>&lt;Button&gt;</code> and wire up the <code>onclick()</code> handler, and replace the existing <code>&lt;Typography&gt;</code> element with some JSON.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Typography</span><span class="p">,</span> <span class="nx">Button</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@material-ui/core&#39;</span><span class="p">;</span>
 </code></pre></div>
 
 
-<p>Try it out. Nice. Now there's a button "ADD VEHICLE". But what is it doing? Let's print it out. Make the return statement</p>
 <div class="codehilite"><pre><span></span><code>    <span class="k">return</span> <span class="p">(</span>
         <span class="o">&lt;&gt;</span>
             <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
@@ -675,12 +681,45 @@
 </code></pre></div>
 
 
-<p>Try it now. Oh yeah.</p>
+<p>Try it out. Nice. Now there's a button "ADD VEHICLE" and some JSON for all the vehicles we're adding.</p>
 <h2 id="the-upshot">The upshot<a class="headerlink" href="#the-upshot" title="Permanent link">&para;</a></h2>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>Write the upshot</p>
-</div>
+<p>We make a very primitive component that updates and displays state. </p>
+<p><code>Vehicles.tsx</code> is now</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Typography</span><span class="p">,</span> <span class="nx">Button</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@material-ui/core&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Vehicle</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./models&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">uuid</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;uuidv4&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">Vehicles() {</span>
+    <span class="kr">const</span> <span class="p">[</span><span class="nx">vehicles</span><span class="p">,</span> <span class="nx">setVehicles</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">([]);</span>
+
+    <span class="kd">function</span> <span class="nx">addVehicle() {</span>
+        <span class="kr">const</span> <span class="nx">make</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">();</span>
+        <span class="kr">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">();</span>
+        <span class="kr">const</span> <span class="nx">mileage</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100000</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="kr">const</span> <span class="nx">vehicle</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">({</span> <span class="nx">make</span><span class="p">,</span> <span class="nx">model</span><span class="p">,</span> <span class="nx">mileage</span> <span class="p">});</span>
+
+        <span class="nx">setVehicles</span><span class="p">([...</span><span class="nx">vehicles</span><span class="p">,</span> <span class="nx">vehicle</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">onClick</span><span class="p">(</span><span class="nx">event</span>: <span class="kt">React.MouseEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+
+        <span class="nx">addVehicle</span><span class="p">();</span>
+
+        <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Typography</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">vehicles</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/Typography&gt;</span>
+        <span class="o">&lt;</span><span class="err">/&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Vehicles</span><span class="p">;</span>
+</code></pre></div>
                 
               
               

@@ -649,28 +649,32 @@
 
 
 <p>Let's unpack that.</p>
-<p>We need <code>&lt;&gt;</code> ... <code>&lt;/&gt;</code> around all the elements because there must be only one top-level element. We have two: The <code>&lt;Button&gt;</code> and the <code>&lt;Table&gt;</code>.</p>
+<p>We need <code>&lt;&gt;</code> ... <code>&lt;/&gt;</code> around all the elements because as there can only be one top-level element. We have two: The <code>&lt;Button&gt;</code> and the <code>&lt;Table&gt;</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The table definition is the analog of basic HTML tables with a head and a body. </p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code>{</code> ... <code>}</code> inside the <code>&lt;TableBody&gt;</code> lets us run display logic, in this case loop over the vehicles and generate rows. There must be only one statement inside <code>{</code> ... <code>}</code> and that code must return React elements.</p>
-</div>
+<p>The <code>{</code> ... <code>}</code> inside the <code>&lt;TableBody&gt;</code> lets us run display logic, in this case loop over the vehicles and generate table rows. There must be only one statement inside <code>{</code> ... <code>}</code> and that code must return React elements.</p>
+<p>Try it. Not bad. But there's more.</p>
 <h2 id="layout-likes-to-be-on-a-ltgridgt">Layout likes to be on a <code>&lt;Grid&gt;</code><a class="headerlink" href="#layout-likes-to-be-on-a-ltgridgt" title="Permanent link">&para;</a></h2>
 <p>Responsive UI frameworks are usually based around the idea of layout in twelve columns. React is one of those frameworks.</p>
 <p>The layout of the page without a grid is actually OK. If we had lots of elements it might be hard to add all the spacing by hand to get things even. And if we didn't like it there'd be lots of place to change it. We can control all the layout you need with grids.</p>
 <p>Another thing's irksome. The button's always on a line on its own, even when the page is wide enough to have the button on the left and the table in the remaining space. There's room. Let's do it.</p>
-<p>Add a <code>&lt;Grid container spacing={2}&gt;</code> around the <code>&lt;Button&gt;</code> and <code>&lt;Table&gt;</code> elements. </p>
+<p>Add a <code>&lt;Grid&gt;</code> with some spacing around the <code>&lt;Button&gt;</code> and <code>&lt;Table&gt;</code> elements. </p>
+<div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">Grid</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@material-ui/core&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+
 <div class="codehilite"><pre><span></span><code>        <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="o">&gt;</span>
             <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
             <span class="o">&lt;</span><span class="nx">Table</span><span class="o">&gt;</span>
                 <span class="p">...</span>
+            <span class="o">&lt;</span><span class="err">/Table&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
 </code></pre></div>
 
 
-<p>Refresh. Not much difference. That's because a grid container lays out grid items and we don't have any yet.</p>
+<p>Refresh. Not much difference. That's because a <code>&lt;Grid container&gt;</code> lays out <code>&lt;Grid item&gt;</code>s and we don't have any yet.</p>
 <p>Add the two items inside the container. </p>
 <div class="codehilite"><pre><span></span><code>        <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="o">&gt;</span>
             <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span><span class="o">&gt;</span>
@@ -682,15 +686,14 @@
 </code></pre></div>
 
 
-<p>This lays out the button and table items side-by-side. But nothing interesting happens when we resize the screen.</p>
-<p>We want to lay out grid items in an actual grid. The default for <code>&lt;Grid item&gt;</code> is to flow items. We don't want that.</p>
-<p>We can specify <em>breakpoints</em> for items (any number of <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code> values) with a column span, which can be <code>1</code> (1 column) through <code>12</code> (the whole row.) Each breakpoint defines the behavior of  responsive design, the way page layout changes to accommodate different screen sizes.</p>
-<div class="admonition error">
-<p class="admonition-title">Error</p>
-<p>Find link TBD. What are sizes of xs ...?</p>
-<p>Link to responsive design</p>
+<p>This lays out the button and table items side-by-side. Try resizing the screen. Things move around as the screen size changes.</p>
+<p>We want to lay out grid items in an actual grid. We saw the default for <code>&lt;Grid item&gt;</code> is to flow items. That's really not very gridy.</p>
+<p>We can specify <em>breakpoint values</em> for items (any number of <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code> values) with a column span, which can be <code>1</code> (1 column) through <code>12</code> (the whole row.) Each breakpoint defines the behavior of responsive design, the way page layout changes to accommodate different screen sizes.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>See <a href="https://material-ui.com/customization/breakpoints/">https://material-ui.com/customization/breakpoints/</a> for the details.</p>
 </div>
-<p>So</p>
+<p>So with all that, now</p>
 <div class="codehilite"><pre><span></span><code>            <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="o">&gt;</span>
                 <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span><span class="o">&gt;</span>
                     <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
@@ -704,11 +707,11 @@
 </code></pre></div>
 
 
-<p>will layout both the button and the table full width if the screen size is <code>xs</code> and side-by-side if the device resolution is <code>sm</code> or above. </p>
-<p>Try waggling the bottom-right corner of the browser around to see the button and table move relative to each other. This is responsive design at work.</p>
+<p>will layout both the button and the table full width if the screen size is less than 600px. and side-by-side if the size if 600px or above.</p>
+<p>Try waggling the bottom-right corner of the browser around to see the button and table move relative to each other. This is responsive design at work with defined columns.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>&lt;Grid container spacing={??}&gt;</code> adds spacing between items, which are rows. So it does not affect margins of the grid container itself. You can try different values for the padding and see this work.</p>
+<p><code>&lt;Grid container spacing={??}&gt;</code> adds spacing between cells of the grid: It does not affect margins of the grid container itself. You can try different values for the padding and see this work.</p>
 </div>
 <h2 id="the-upshot">The upshot<a class="headerlink" href="#the-upshot" title="Permanent link">&para;</a></h2>
 <p>We added an array of Vehicles as state, a button to add a new one with some random values for the fields for <code>make</code>, <code>model</code>, and <code>mileage</code>, and a list of them that updates as we add a vehicle.</p>
@@ -720,7 +723,7 @@
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">uuid</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;uuidv4&#39;</span><span class="p">;</span>
 
 <span class="kd">function</span> <span class="nx">Vehicles() {</span>
-    <span class="kr">const</span> <span class="p">[</span><span class="nx">vehicles</span><span class="p">,</span> <span class="nx">setVehicles</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">([])</span>
+    <span class="kr">const</span> <span class="p">[</span><span class="nx">vehicles</span><span class="p">,</span> <span class="nx">setVehicles</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">([]);</span>
 
     <span class="kd">function</span> <span class="nx">addVehicle() {</span>
         <span class="kr">const</span> <span class="nx">make</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">();</span>
@@ -740,40 +743,44 @@
     <span class="p">}</span>
 
     <span class="k">return</span> <span class="p">(</span>
-        <span class="o">&lt;&gt;</span>
-            <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="o">&gt;</span>
-                <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span><span class="o">&gt;</span>
-                    <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
-                <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
-                <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="mi">9</span><span class="p">}</span><span class="o">&gt;</span>
-                    <span class="o">&lt;</span><span class="nx">Table</span><span class="o">&gt;</span>
-                        <span class="o">&lt;</span><span class="nx">TableHead</span><span class="o">&gt;</span>
-                            <span class="o">&lt;</span><span class="nx">TableRow</span><span class="o">&gt;</span>
-                                <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="nx">Make</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
-                                <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="nx">Model</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
-                                <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="nx">Mileage</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
-                            <span class="o">&lt;</span><span class="err">/TableRow&gt;</span>
-                        <span class="o">&lt;</span><span class="err">/TableHead&gt;</span>
-                        <span class="o">&lt;</span><span class="nx">TableBody</span><span class="o">&gt;</span>
-                            <span class="p">{</span>
-                                <span class="nx">vehicles</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">vehicle</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
-                                    <span class="o">&lt;</span><span class="nx">TableRow</span><span class="o">&gt;</span>
-                                        <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">vehicle</span><span class="p">.</span><span class="nx">make</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
-                                        <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">vehicle</span><span class="p">.</span><span class="nx">model</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
-                                        <span class="o">&lt;</span><span class="nx">TableCell</span> <span class="nx">align</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">vehicle</span><span class="p">.</span><span class="nx">mileage</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
-                                    <span class="o">&lt;</span><span class="err">/TableRow&gt;</span>
-                                <span class="p">))</span>
-                            <span class="p">}</span>
-                        <span class="o">&lt;</span><span class="err">/TableBody&gt;</span>
-                    <span class="o">&lt;</span><span class="err">/Table&gt;</span>
-                <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
             <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
-        <span class="o">&lt;</span><span class="err">/&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="mi">9</span><span class="p">}</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">Table</span><span class="o">&gt;</span>
+                    <span class="o">&lt;</span><span class="nx">TableHead</span><span class="o">&gt;</span>
+                        <span class="o">&lt;</span><span class="nx">TableRow</span><span class="o">&gt;</span>
+                            <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="nx">Make</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
+                            <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="nx">Model</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
+                            <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="nx">Mileage</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
+                        <span class="o">&lt;</span><span class="err">/TableRow&gt;</span>
+                    <span class="o">&lt;</span><span class="err">/TableHead&gt;</span>
+                    <span class="o">&lt;</span><span class="nx">TableBody</span><span class="o">&gt;</span>
+                        <span class="p">{</span>
+                            <span class="nx">vehicles</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">vehicle</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                                <span class="o">&lt;</span><span class="nx">TableRow</span><span class="o">&gt;</span>
+                                    <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">vehicle</span><span class="p">.</span><span class="nx">make</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
+                                    <span class="o">&lt;</span><span class="nx">TableCell</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">vehicle</span><span class="p">.</span><span class="nx">model</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
+                                    <span class="o">&lt;</span><span class="nx">TableCell</span> <span class="nx">align</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">vehicle</span><span class="p">.</span><span class="nx">mileage</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/TableCell&gt;</span>
+                                <span class="o">&lt;</span><span class="err">/TableRow&gt;</span>
+                            <span class="p">))</span>
+                        <span class="p">}</span>
+                    <span class="o">&lt;</span><span class="err">/TableBody&gt;</span>
+                <span class="o">&lt;</span><span class="err">/Table&gt;</span>
+            <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
     <span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kr">export</span> <span class="k">default</span> <span class="nx">Vehicles</span><span class="p">;</span>
+
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Vehicles</span><span class="p">;</span>
 </code></pre></div>
+
+
+<p>Now we're going to integrate the UI we just made with the backend database.</p>
                 
               
               
