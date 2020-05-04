@@ -1,0 +1,1525 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Integrate Amplify - C-19 Autobody Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#start-simple" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="C-19 Autobody Documentation" class="md-header-nav__button md-logo" aria-label="C-19 Autobody Documentation">
+      
+  <img src="../assets/ic_build_white_48dp.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            C-19 Autobody Documentation
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Integrate Amplify
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../tools/" class="md-tabs__link">
+          1. Set things up
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../navigation/" class="md-tabs__link">
+          2. UI starter
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../amplify/" class="md-tabs__link">
+          3. Back-end starter
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../prepare-ui/" class="md-tabs__link">
+          4. Connect the UI
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" class="md-tabs__link md-tabs__link--active">
+          4. Make the table great
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../releasenotes/" class="md-tabs__link">
+          Fine print
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="C-19 Autobody Documentation" class="md-nav__button md-logo" aria-label="C-19 Autobody Documentation">
+      
+  <img src="../assets/ic_build_white_48dp.png" alt="logo">
+
+    </a>
+    C-19 Autobody Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      1. Set things up
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="1. Set things up" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        1. Set things up
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../tools/" title="Install the tools" class="md-nav__link">
+      Install the tools
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../createproject/" title="Create the project" class="md-nav__link">
+      Create the project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../material/" title="Add React Material" class="md-nav__link">
+      Add React Material
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      2. UI starter
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="2. UI starter" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        2. UI starter
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../navigation/" title="Add navigation" class="md-nav__link">
+      Add navigation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      3. Back-end starter
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="3. Back-end starter" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        3. Back-end starter
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../amplify/" title="Add AWS Amplify" class="md-nav__link">
+      Add AWS Amplify
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      4. Connect the UI
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="4. Connect the UI" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        4. Connect the UI
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../prepare-ui/" title="Prepare the UI" class="md-nav__link">
+      Prepare the UI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../add-table-view/" title="Add a table" class="md-nav__link">
+      Add a table
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../connecttobackend/" title="Connect to the back-end" class="md-nav__link">
+      Connect to the back-end
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      4. Make the table great
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="4. Make the table great" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        4. Make the table great
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Integrate Amplify
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Integrate Amplify" class="md-nav__link md-nav__link--active">
+      Integrate Amplify
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#start-simple" class="md-nav__link">
+    Start simple
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#but-of-course-were-not-stopping-here" class="md-nav__link">
+    But of course we're not stopping here
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#we-broke-some-things" class="md-nav__link">
+    We broke some things
+  </a>
+  
+    <nav class="md-nav" aria-label="We broke some things">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-is-broken-now-too" class="md-nav__link">
+    Search is broken now too
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-refresh" class="md-nav__link">
+    Triggering refresh
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggering refresh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-new-useeffect" class="md-nav__link">
+    The new useEffect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-items-from-the-table-itself" class="md-nav__link">
+    Manipulating items from the table itself
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#now-enable-deleting-a-row" class="md-nav__link">
+    Now enable deleting a row
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-a-row" class="md-nav__link">
+    Updating a row
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-spit-and-polish" class="md-nav__link">
+    Some spit and polish
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-upshot" class="md-nav__link">
+    The upshot
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Fine print
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Fine print" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        Fine print
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../releasenotes/" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../license/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#start-simple" class="md-nav__link">
+    Start simple
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#but-of-course-were-not-stopping-here" class="md-nav__link">
+    But of course we're not stopping here
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#we-broke-some-things" class="md-nav__link">
+    We broke some things
+  </a>
+  
+    <nav class="md-nav" aria-label="We broke some things">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-is-broken-now-too" class="md-nav__link">
+    Search is broken now too
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-refresh" class="md-nav__link">
+    Triggering refresh
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggering refresh">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-new-useeffect" class="md-nav__link">
+    The new useEffect
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-items-from-the-table-itself" class="md-nav__link">
+    Manipulating items from the table itself
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#now-enable-deleting-a-row" class="md-nav__link">
+    Now enable deleting a row
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-a-row" class="md-nav__link">
+    Updating a row
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-spit-and-polish" class="md-nav__link">
+    Some spit and polish
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-upshot" class="md-nav__link">
+    The upshot
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Integrate Amplify</h1>
+                
+                <div class="admonition error">
+<p class="admonition-title">Error</p>
+<p>Wow is the code and this page ever a mess.</p>
+</div>
+<p>As we already saw, the table that displays all the vehicles is lame. It does not paginate and it only works on all the vehicles at once. It does not let you create, update, or update the data within the table. In addition, we had to create the table from scratch using the basic elements of Material UI. Let's fix that. Or rather, let someone else fix it for us. Enter the magnificent Material Table, <a href="https://material-table.com">https://material-table.com</a>. </p>
+<p>We're just about tp make some big changes tp <code>Vehicle.tsx</code> with quite a few steps. As always, if you want to skip the steps and see the end result check "The upshot" section.</p>
+<h2 id="start-simple">Start simple<a class="headerlink" href="#start-simple" title="Permanent link">&para;</a></h2>
+<p>Let's hook up Material Table to the existing data.</p>
+<p>Add the dependency</p>
+<div class="codehilite"><pre><span></span><code>yarn add material-table
+</code></pre></div>
+
+
+<p>Import the table.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="nx">MaterialTable</span> <span class="nx">from</span> <span class="s1">&#39;material-table&#39;</span>
+</code></pre></div>
+
+
+<p>There's a ton of options for each column so we use the type <code>Column</code> to leverage editor completion. Always nice. <code>numeric</code> aligns right.</p>
+<p>Material Table requires a mutable <code>id</code> on each row. AWS Amplify provides and <code>id</code>, but it's <code>readonly</code>. So things won't work if you just pass a <code>Vehicle</code> around for rows. A quick fix is map each <code>Vehicle</code> to an untyped object. I found this out and figured out the fix so you don't have to.</p>
+<p>The function <code>rowMapper()</code> does this.</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span> <span class="nx">rowMapper</span><span class="p">(</span><span class="nx">vehicles</span>: <span class="kt">Vehicle</span><span class="p">[])</span><span class="o">:</span> <span class="nx">Vehicle</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">vehicles</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">vehicle</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">vehicle</span> <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>And define some column metadata.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">columns</span>: <span class="kt">Column</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Make&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;make&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Model&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;model&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Mileage&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;mileage&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;numeric&quot;</span> <span class="p">},</span>
+<span class="p">];</span>
+</code></pre></div>
+
+
+<p>Now we have everything we need to replace our old table with the nice one.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="mi">9</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">MaterialTable</span>
+                <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">rowMapper</span><span class="p">()}</span>
+                <span class="nx">columns</span><span class="o">=</span><span class="p">{</span><span class="nx">columns</span><span class="p">}</span>
+            <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+    <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+<span class="p">);</span>
+</code></pre></div>
+
+
+<p>Try it. Ugh. Looks like we need some icons. </p>
+<p>Follow the instructions in <a href="https://material-table.com/#/docs/install">https://material-table.com/#/docs/install</a>.</p>
+<p>Yay. This table's already looking amazing. Search works for string and numeric fields. </p>
+<h2 id="but-of-course-were-not-stopping-here">But of course we're not stopping here<a class="headerlink" href="#but-of-course-were-not-stopping-here" title="Permanent link">&para;</a></h2>
+<p>We're not, because this is a tutorial on Material Table among several other things. There's still lots to do before we're awesome.</p>
+<p>Try pressing the "ADD VEHICLE" button. See the total increase? Cool. Press it 1,000 more times. It slows down. A lot. Retrieving all the vehicles every time clearly doesn't work. Not so cool.</p>
+<p>Let's paginate. But first—in a bold move—remove the state and <code>fetchAll()</code>. Comment it out in  <code>subscriber()</code>. We're going need something here, and this will remind us.</p>
+<p><code>function Vehicles()</code> now starts</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span> <span class="nx">Vehicles() {</span>
+    <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">function</span> <span class="nx">subscriber</span><span class="p">(</span><span class="nx">subscriptionMessage</span>: <span class="kt">SubscriptionMessage</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;subscriptionMessage&#39;</span><span class="p">,</span> <span class="nx">subscriptionMessage</span><span class="p">);</span>
+
+            <span class="c1">// fetchAll();</span>
+        <span class="p">}</span>
+
+        <span class="kr">const</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">DataStore</span>
+            <span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscriber</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span> <span class="p">};</span>
+    <span class="p">},</span> <span class="p">[]);</span>
+
+    <span class="kd">function</span> <span class="nx">addVehicle() {</span>
+        <span class="p">...</span>
+</code></pre></div>
+
+
+<p>The <code>data</code> property in <code>&lt;MaterialTable ... /&gt;</code> can also take a function. Fields in the function argument, the query, allow us to retrieve just the right single page of vehicles. We'll take <code>query.page</code> and <code>query.pageSize</code> and call <code>DataStore.query()</code> to get just the right page. Oh, and <code>data</code> needs a <code>Promise</code> now. Oh, and <code>DataStore.query()</code> needs a predicate now, even the always-true predicate.</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">data</span><span class="o">=</span><span class="p">{</span>
+    <span class="nx">query</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">thisPage</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">page</span>: <span class="kt">query.page</span><span class="p">,</span>
+            <span class="nx">limit</span>: <span class="kt">query.pageSize</span>
+        <span class="p">};</span>
+
+        <span class="nx">DataStore</span>
+            <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span> <span class="nx">Predicates</span><span class="p">.</span><span class="nx">ALL</span><span class="p">,</span> <span class="nx">thisPage</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicles</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">({</span>
+                <span class="nx">data</span>: <span class="kt">rowMapper</span><span class="p">(</span><span class="nx">vehicles</span><span class="p">),</span>
+                <span class="nx">page</span>: <span class="kt">query.page</span><span class="p">,</span>
+                <span class="nx">totalCount</span>: <span class="kt">query.pageSize</span>
+            <span class="p">}))</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>In-line is OK. But we can do better. Here's the above as a function with all the right types.</p>
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span> <span class="nx">data</span><span class="p">(</span><span class="nx">query</span>: <span class="kt">Query</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">QueryResult</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">thisPage</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">page</span>: <span class="kt">query.page</span><span class="p">,</span>
+            <span class="nx">limit</span>: <span class="kt">query.pageSize</span>
+        <span class="p">};</span>
+
+        <span class="nx">DataStore</span>
+            <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span>
+                <span class="nx">criteria</span> <span class="o">=&gt;</span> <span class="nx">criteria</span><span class="p">.</span><span class="nx">or</span><span class="p">(</span><span class="nx">orTerms</span> <span class="o">=&gt;</span> <span class="nx">orTerms</span>
+                    <span class="p">.</span><span class="nx">make</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">mileage</span><span class="p">(</span><span class="s2">&quot;ge&quot;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">))),</span>
+                <span class="nx">thisPage</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicles</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">resolve</span><span class="p">({</span>
+                    <span class="nx">data</span>: <span class="kt">rowMapper</span><span class="p">(</span><span class="nx">vehicles</span><span class="p">),</span>
+                    <span class="nx">page</span>: <span class="kt">query.page</span><span class="p">,</span>
+                    <span class="nx">totalCount</span>: <span class="kt">1000000</span>
+                <span class="p">});</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>And now our table element looks like</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="nx">MaterialTable</span>
+    <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span>
+    <span class="nx">columns</span><span class="o">=</span><span class="p">{</span><span class="nx">columns</span><span class="p">}</span>
+<span class="err">/&gt;</span>
+</code></pre></div>
+
+
+<h2 id="we-broke-some-things">We broke some things<a class="headerlink" href="#we-broke-some-things" title="Permanent link">&para;</a></h2>
+<p>Only first page is displayed. And we don't refresh when we add a vehicle. (You might have noticed we set <code>totalCount</code> to a large number to get something going until we solve this.)</p>
+<p>There are a couple of reasons for this. For pagination to work correctly, Material Table needs to know the total number of rows. That used to be easy because we had all the rows. But now we only have a page at a time. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It turns out that this is much harder than you'd think. It's because we're using GraphQL backed by DynamoDB. DynamoDB does not work like SQL where you can <code>SELECT COUNT(*) ...</code> or something. There's no way to get the total number without scanning a whole table, which is prohibitively expensive for large tables.</p>
+<p>We're going to solve this another way. But fair warning, this is going to feel like we don't know what we're doing. </p>
+</div>
+<h3 id="search-is-broken-now-too">Search is broken now too<a class="headerlink" href="#search-is-broken-now-too" title="Permanent link">&para;</a></h3>
+<p>It looks like there's a bad interaction between what we're now doing in Material Table and how we're using Amplify DataStore to fetch a page. Let's fix it.</p>
+<p><code>DataStore.query(...)</code> takes a predicate, specifically a function that takes a <code>ModelPredicate&lt;Vehicle&gt;</code> and returns one too. Our task is to add some search criterial.</p>
+<p>We can take <code>query.search</code> and create criteria. Start with <code>make</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">DataStore</span>
+    <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span>
+        <span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">make</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">),</span>
+        <span class="nx">thisPage</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicles</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">({</span>
+            <span class="nx">data</span>: <span class="kt">rowMapper</span><span class="p">(</span><span class="nx">vehicles</span><span class="p">),</span>
+            <span class="nx">page</span>: <span class="kt">query.page</span><span class="p">,</span>
+            <span class="nx">totalCount</span>: <span class="kt">1000000</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">);</span>
+</code></pre></div>
+
+
+<p>We can type a search term and get matching vehicle makes. Nice. Compound criteria are constructed like this</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">make</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">).</span><span class="nx">model</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">),</span>
+</code></pre></div>
+
+
+<p>but when we try it we discover that is an <code>and</code> criterion. We need <code>or</code>. This is the right incantation for that.</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">or</span><span class="p">(</span><span class="nx">or</span> <span class="o">=&gt;</span>
+    <span class="nx">or</span><span class="p">.</span><span class="nx">make</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">)),</span>
+</code></pre></div>
+
+
+<p>Adding search on <code>mileage</code> is easy. We just have to think of a reasonable semantics. "Is greater than or equal" is probably better than "contains these digits." Now we have</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">DataStore</span>
+    <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span>
+        <span class="nx">c</span> <span class="o">=&gt;</span> <span class="nx">c</span><span class="p">.</span><span class="nx">or</span><span class="p">(</span><span class="nx">or</span> <span class="o">=&gt;</span>
+            <span class="nx">or</span><span class="p">.</span><span class="nx">make</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">mileage</span><span class="p">(</span><span class="s2">&quot;ge&quot;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">))),</span>
+        <span class="nx">thisPage</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicles</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">resolve</span><span class="p">({</span>
+            <span class="nx">data</span>: <span class="kt">rowMapper</span><span class="p">(</span><span class="nx">vehicles</span><span class="p">),</span>
+            <span class="nx">page</span>: <span class="kt">query.page</span><span class="p">,</span>
+            <span class="nx">totalCount</span>: <span class="kt">1000000</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">);</span>
+</code></pre></div>
+
+
+<p>Search is fixed.</p>
+<p>We see there's a default title that's not very useful. Let's leave all the polish like this until after everything's working.</p>
+<h2 id="triggering-refresh">Triggering refresh<a class="headerlink" href="#triggering-refresh" title="Permanent link">&para;</a></h2>
+<p>We can add vehicles as before, but they're not showing up in the table. We need to plug in the subscription to the table to refresh it.</p>
+<p>It's pretty easy if you know how. We need to add a reference to the table we can use to trigger a refresh.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">createRef</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">MaterialTable</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Column</span><span class="p">,</span> <span class="nx">Query</span><span class="p">,</span> <span class="nx">QueryResult</span><span class="p">,</span> <span class="nx">MaterialTableProps</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;material-table&#39;</span>
+</code></pre></div>
+
+
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">tableRef</span> <span class="o">=</span> <span class="nx">createRef</span><span class="o">&lt;</span><span class="nx">MaterialTableProps</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+</code></pre></div>
+
+
+<p>Now bind it to the table like this.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="nx">MaterialTable</span>
+    <span class="nx">tableRef</span><span class="o">=</span><span class="p">{</span><span class="nx">tableRef</span><span class="p">}</span>
+    <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span>
+    <span class="nx">columns</span><span class="o">=</span><span class="p">{</span><span class="nx">columns</span><span class="p">}</span>
+<span class="err">/&gt;</span>
+</code></pre></div>
+
+
+<p>Now all we have to do to trigger a refresh on the table when we get an event from the subscription. It's a bit finicky. Just skip to <em>The new <code>useEffect</code></em> if you want. Otherwise here are the details.</p>
+<p>We going to trip the table's <code>onQueryChange()</code> hook. That function requires some arguments, which we mostly relay from the current table state. There are a couple of things we didn't figure out how to get from the table state like the current <code>orderBy</code>. Irksome, but not a deal-breaker.</p>
+<p>Ever wonder what that empty <code>[]</code> was in the <code>userEffect()</code> hook declaration? Well it's for passing dependencies. <code>tableRef</code> is a dependency.</p>
+<h3 id="the-new-useeffect">The new <code>useEffect</code><a class="headerlink" href="#the-new-useeffect" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>    <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">function</span> <span class="nx">subscriber</span><span class="p">(</span><span class="nx">msg</span>: <span class="kt">SubscriptionMessage</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;subscription&#39;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">opType</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">tableRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kr">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">tableRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">onQueryChange</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">table</span><span class="p">.</span><span class="nx">onQueryChange</span><span class="p">({</span>
+                        <span class="nx">filters</span><span class="o">:</span> <span class="p">[],</span>
+                        <span class="nx">orderBy</span><span class="o">:</span> <span class="p">{},</span>
+                        <span class="nx">orderDirection</span><span class="o">:</span> <span class="s1">&#39;asc&#39;</span><span class="p">,</span>
+                        <span class="nx">page</span>: <span class="kt">table.page</span> <span class="o">||</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="nx">pageSize</span>: <span class="kt">table.options?.pageSize</span> <span class="o">||</span> <span class="mi">5</span><span class="p">,</span>
+                        <span class="nx">search</span>: <span class="kt">table.options?.searchText</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+
+        <span class="kr">const</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">DataStore</span>
+            <span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscriber</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span> <span class="p">};</span>
+    <span class="p">},</span> <span class="p">[</span><span class="nx">tableRef</span><span class="p">]);</span>
+
+<span class="p">},</span> <span class="p">[</span><span class="nx">tableRef</span><span class="p">]);</span>
+</code></pre></div>
+
+
+<p>Try it. Much better.</p>
+<p>If you want to delete all existing vehicles and start over, you can add a <code>&lt;Button&gt;</code> and call <code>DataStore</code>. Like this</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span> <span class="nx">sm</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Add</span> <span class="nx">vehicle</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onDeleteAll</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Delete</span> <span class="nx">all</span><span class="o">&lt;</span><span class="err">/Button&gt;</span>
+<span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+</code></pre></div>
+
+
+<div class="codehilite"><pre><span></span><code><span class="kd">function</span> <span class="nx">onDeleteAll</span><span class="p">(</span><span class="nx">event</span>: <span class="kt">React.MouseEvent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">DataStore</span>
+        <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span> <span class="nx">Predicates</span><span class="p">.</span><span class="nx">ALL</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+        <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+
+    <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Well that's a lot of redrawing of the table. We'll see if we can fix that later when we polish.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to skip the details of making rows editable, skip to <em>The complete <code>editable</code> definition</em></p>
+</div>
+<h2 id="manipulating-items-from-the-table-itself">Manipulating items from the table itself<a class="headerlink" href="#manipulating-items-from-the-table-itself" title="Permanent link">&para;</a></h2>
+<p>The "ADD VEHICLE" button has a bunch of issues. Let's move that functionality to the table. Removing buttons simplifies the layout.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">MaterialTable</span>
+                <span class="nx">tableRef</span><span class="o">=</span><span class="p">{</span><span class="nx">tableRef</span><span class="p">}</span>
+                <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span>
+                <span class="nx">columns</span><span class="o">=</span><span class="p">{</span><span class="nx">columns</span><span class="p">}</span>
+                <span class="nx">editable</span><span class="o">=</span><span class="p">{</span><span class="nx">editable</span><span class="p">}</span>
+            <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+    <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+<span class="p">);</span>
+</code></pre></div>
+
+
+<p>Material Table provides hooks for CRUD operations right in the table. The hooks are defined as</p>
+<div class="codehilite"><pre><span></span><code>  <span class="nx">editable</span><span class="o">?:</span> <span class="p">{</span>
+    <span class="nx">isEditable</span><span class="o">?:</span> <span class="p">(</span><span class="nx">rowData</span>: <span class="kt">RowData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="nx">isDeletable</span><span class="o">?:</span> <span class="p">(</span><span class="nx">rowData</span>: <span class="kt">RowData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">boolean</span><span class="p">;</span>
+    <span class="nx">onRowAdd</span><span class="o">?:</span> <span class="p">(</span><span class="nx">newData</span>: <span class="kt">RowData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="nx">onRowUpdate</span><span class="o">?:</span> <span class="p">(</span><span class="nx">newData</span>: <span class="kt">RowData</span><span class="p">,</span> <span class="nx">oldData?</span>: <span class="kt">RowData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="nx">onRowDelete</span><span class="o">?:</span> <span class="p">(</span><span class="nx">oldData</span>: <span class="kt">RowData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+
+<p>Let's add them one-by-one. All hooks are optional.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">editable</span> <span class="o">=</span> <span class="p">{</span>
+<span class="p">};</span>
+</code></pre></div>
+
+
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="nx">MaterialTable</span>
+    <span class="nx">tableRef</span><span class="o">=</span><span class="p">{</span><span class="nx">tableRef</span><span class="p">}</span>
+    <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span>
+    <span class="nx">columns</span><span class="o">=</span><span class="p">{</span><span class="nx">columns</span><span class="p">}</span>
+    <span class="nx">editable</span><span class="o">=</span><span class="p">{</span><span class="nx">editable</span><span class="p">}</span>
+<span class="err">/&gt;</span>
+</code></pre></div>
+
+
+<p>Test it. Nothing does nothing successfully.</p>
+<p>Before we can edit a row that has optional fields—our <code>mileage</code> field—we need to define a value returned when omitted. This is easy: Just add it to the <code>Column</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">columns</span>: <span class="kt">Column</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Make&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;make&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Model&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;model&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Mileage&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;mileage&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="nx">emptyValue</span><span class="o">:</span> <span class="s1">&#39;&#39;</span> <span class="p">},</span>
+<span class="p">];</span>
+</code></pre></div>
+
+
+<p>Add a function to edit a row. We get <em>save</em> and <em>cancel</em> buttons for free.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">onRowAdd</span> <span class="o">=</span> <span class="p">(</span><span class="nx">newData</span>: <span class="kt">any</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">({</span>
+                <span class="nx">make</span>: <span class="kt">newData.make</span><span class="p">,</span>
+                <span class="nx">model</span>: <span class="kt">newData.model</span><span class="p">,</span>
+                <span class="nx">mileage</span>: <span class="kt">parseInt</span><span class="p">(</span><span class="nx">newData</span><span class="p">.</span><span class="nx">mileage</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+            <span class="p">});</span>
+            <span class="nx">DataStore</span>
+                <span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">add</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">)</span>
+
+                    <span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+                <span class="p">})</span>
+                <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">)</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">})</span>
+
+<span class="kr">const</span> <span class="nx">editable</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">onRowAdd</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Let's unpack this.</p>
+<p><code>onRowAdd</code> returns a <code>Promise</code>. That's easy: we just have to call <code>resolve</code> or <code>reject</code> like we already know.</p>
+<p>We <code>setTimeout()</code> to 1000ms and <code>clearTimeout()</code> only if the save succeeds. </p>
+<h2 id="now-enable-deleting-a-row">Now enable deleting a row<a class="headerlink" href="#now-enable-deleting-a-row" title="Permanent link">&para;</a></h2>
+<p>The function for <code>onRowDelete</code> looks very similar to that for <code>onRowAdd</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">onRowDelete</span> <span class="o">=</span> <span class="p">(</span><span class="nx">oldData</span>: <span class="kt">any</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">DataStore</span>
+                <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span> <span class="nx">oldData</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">)</span>
+
+                    <span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+                <span class="p">})</span>
+                <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">)</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">})</span>
+
+<span class="kr">const</span> <span class="nx">editable</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">onRowAdd</span><span class="p">,</span>
+    <span class="nx">onRowDelete</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Try it. Yay, a rubbish bin. Still noticing quite a bit of table flash.</p>
+<h2 id="updating-a-row">Updating a row<a class="headerlink" href="#updating-a-row" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">onRowUpdate</span> <span class="o">=</span> <span class="p">(</span><span class="nx">newData</span>: <span class="kt">any</span><span class="p">,</span> <span class="nx">oldData</span>: <span class="kt">any</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">DataStore</span>
+                <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span> <span class="nx">oldData</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">original</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="kr">const</span> <span class="nx">updated</span> <span class="o">=</span> <span class="nx">Vehicle</span><span class="p">.</span><span class="nx">copyOf</span><span class="p">(</span><span class="nx">original</span><span class="p">,</span> <span class="nx">updated</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">updated</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="nx">newData</span><span class="p">.</span><span class="nx">make</span>
+                        <span class="nx">updated</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="nx">newData</span><span class="p">.</span><span class="nx">model</span>
+                        <span class="nx">updated</span><span class="p">.</span><span class="nx">mileage</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">newData</span><span class="p">.</span><span class="nx">mileage</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+                    <span class="p">});</span>
+
+                    <span class="k">return</span> <span class="nx">DataStore</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">updated</span><span class="p">);</span>
+                <span class="p">})</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">)</span>
+
+                    <span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+                <span class="p">})</span>
+                <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">)</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">})</span>
+</code></pre></div>
+
+
+<p>The last one's a bit sneaky. It's chaining <code>Promise</code>s by returning a <code>Promise</code> from the first <code>.then</code>. Just in case you didn't know a way to do this.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Oh wow. We just noticed we got column sorting for free somehow.</p>
+</div>
+<h2 id="some-spit-and-polish">Some spit and polish<a class="headerlink" href="#some-spit-and-polish" title="Permanent link">&para;</a></h2>
+<p>Material Table takes options. Lots of options. Let's us a couple of quick ones here.</p>
+<p>Remove the total number of rows for the display in pagination.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">localization</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">pagination</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">labelDisplayedRows</span><span class="o">:</span> <span class="s1">&#39;{from}-{to}&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Remove the title and change the way we display pages.</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">const</span> <span class="nx">options</span>: <span class="kt">Options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">showTitle</span>: <span class="kt">false</span><span class="p">,</span>
+    <span class="nx">showFirstLastPageButtons</span>: <span class="kt">false</span><span class="p">,</span>
+    <span class="nx">paginationType</span><span class="o">:</span> <span class="s2">&quot;stepped&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>So now our Material Table looks like</p>
+<div class="codehilite"><pre><span></span><code><span class="o">&lt;</span><span class="nx">MaterialTable</span>
+    <span class="nx">tableRef</span><span class="o">=</span><span class="p">{</span><span class="nx">tableRef</span><span class="p">}</span>
+    <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span>
+    <span class="nx">columns</span><span class="o">=</span><span class="p">{</span><span class="nx">columns</span><span class="p">}</span>
+    <span class="nx">editable</span><span class="o">=</span><span class="p">{</span><span class="nx">editable</span><span class="p">}</span>
+    <span class="nx">localization</span><span class="o">=</span><span class="p">{</span><span class="nx">localization</span><span class="p">}</span>
+    <span class="nx">options</span><span class="o">=</span><span class="p">{</span><span class="nx">options</span><span class="p">}</span>
+<span class="err">/&gt;</span>
+</code></pre></div>
+
+
+<h2 id="the-upshot">The upshot<a class="headerlink" href="#the-upshot" title="Permanent link">&para;</a></h2>
+<p>We integrated Amplify DataStore and Material Table. I think it was well worth it. It would have taken ages to do this from scratch.</p>
+<p>There are some wrinkles, but not enough we can't press on.</p>
+<p>Our final <code>Vehicles.tsx</code> is this</p>
+<div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span><span class="p">,</span> <span class="nx">createRef</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Grid</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@material-ui/core&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Vehicle</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./models&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">DataStore</span><span class="p">,</span> <span class="nx">SubscriptionMessage</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@aws-amplify/datastore&#39;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">MaterialTable</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Column</span><span class="p">,</span> <span class="nx">Query</span><span class="p">,</span> <span class="nx">QueryResult</span><span class="p">,</span> <span class="nx">MaterialTableProps</span><span class="p">,</span> <span class="nx">Options</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;material-table&#39;</span>
+
+<span class="kr">const</span> <span class="nx">columns</span>: <span class="kt">Column</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Make&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;make&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Model&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;model&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Mileage&#39;</span><span class="p">,</span> <span class="nx">field</span><span class="o">:</span> <span class="s1">&#39;mileage&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;numeric&quot;</span><span class="p">,</span> <span class="nx">emptyValue</span><span class="o">:</span> <span class="s1">&#39;&#39;</span> <span class="p">},</span>
+<span class="p">];</span>
+
+<span class="kd">function</span> <span class="nx">Vehicles() {</span>
+    <span class="kr">const</span> <span class="nx">tableRef</span> <span class="o">=</span> <span class="nx">createRef</span><span class="o">&lt;</span><span class="nx">MaterialTableProps</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+
+    <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">function</span> <span class="nx">subscriber</span><span class="p">(</span><span class="nx">msg</span>: <span class="kt">SubscriptionMessage</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;subscription&#39;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">.</span><span class="nx">opType</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">tableRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kr">const</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">tableRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nx">table</span><span class="p">.</span><span class="nx">onQueryChange</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">table</span><span class="p">.</span><span class="nx">onQueryChange</span><span class="p">({</span>
+                        <span class="nx">filters</span><span class="o">:</span> <span class="p">[],</span>
+                        <span class="nx">orderBy</span><span class="o">:</span> <span class="p">{},</span>
+                        <span class="nx">orderDirection</span><span class="o">:</span> <span class="s1">&#39;asc&#39;</span><span class="p">,</span>
+                        <span class="nx">page</span>: <span class="kt">table.page</span> <span class="o">||</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="nx">pageSize</span>: <span class="kt">table.options?.pageSize</span> <span class="o">||</span> <span class="mi">5</span><span class="p">,</span>
+                        <span class="nx">search</span>: <span class="kt">table.options?.searchText</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+
+        <span class="kr">const</span> <span class="nx">subscription</span> <span class="o">=</span> <span class="nx">DataStore</span>
+            <span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">subscriber</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">subscription</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">();</span> <span class="p">};</span>
+    <span class="p">},</span> <span class="p">[</span><span class="nx">tableRef</span><span class="p">]);</span>
+
+    <span class="kd">function</span> <span class="nx">rowMapper</span><span class="p">(</span><span class="nx">vehicles</span>: <span class="kt">Vehicle</span><span class="p">[])</span><span class="o">:</span> <span class="nx">Vehicle</span><span class="p">[]</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">vehicles</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">vehicle</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">vehicle</span> <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nx">data</span><span class="p">(</span><span class="nx">query</span>: <span class="kt">Query</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="nx">QueryResult</span><span class="o">&lt;</span><span class="nx">Vehicle</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">thisPage</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="nx">page</span>: <span class="kt">query.page</span><span class="p">,</span>
+                <span class="nx">limit</span>: <span class="kt">query.pageSize</span>
+            <span class="p">};</span>
+
+            <span class="nx">DataStore</span>
+                <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span>
+                    <span class="nx">criteria</span> <span class="o">=&gt;</span> <span class="nx">criteria</span><span class="p">.</span><span class="nx">or</span><span class="p">(</span><span class="nx">orTerms</span> <span class="o">=&gt;</span> <span class="nx">orTerms</span>
+                        <span class="p">.</span><span class="nx">make</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
+                        <span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s2">&quot;contains&quot;</span><span class="p">,</span> <span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">)</span>
+                        <span class="p">.</span><span class="nx">mileage</span><span class="p">(</span><span class="s2">&quot;ge&quot;</span><span class="p">,</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">query</span><span class="p">.</span><span class="nx">search</span><span class="p">))),</span>
+                    <span class="nx">thisPage</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">vehicles</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">resolve</span><span class="p">({</span>
+                        <span class="nx">data</span>: <span class="kt">rowMapper</span><span class="p">(</span><span class="nx">vehicles</span><span class="p">),</span>
+                        <span class="nx">page</span>: <span class="kt">query.page</span><span class="p">,</span>
+                        <span class="nx">totalCount</span>: <span class="kt">1000000</span>
+                    <span class="p">});</span>
+                <span class="p">})</span>
+                <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="kr">const</span> <span class="nx">onRowAdd</span> <span class="o">=</span> <span class="p">(</span><span class="nx">newData</span>: <span class="kt">any</span><span class="p">)</span> <span class="o">=&gt;</span>
+        <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kr">const</span> <span class="nx">add</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">({</span>
+                    <span class="nx">make</span>: <span class="kt">newData.make</span><span class="p">,</span>
+                    <span class="nx">model</span>: <span class="kt">newData.model</span><span class="p">,</span>
+                    <span class="nx">mileage</span>: <span class="kt">parseInt</span><span class="p">(</span><span class="nx">newData</span><span class="p">.</span><span class="nx">mileage</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+                <span class="p">});</span>
+                <span class="nx">DataStore</span>
+                    <span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">add</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">)</span>
+
+                        <span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+                    <span class="p">})</span>
+                    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">)</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">})</span>
+
+    <span class="kr">const</span> <span class="nx">onRowDelete</span> <span class="o">=</span> <span class="p">(</span><span class="nx">oldData</span>: <span class="kt">any</span><span class="p">)</span> <span class="o">=&gt;</span>
+        <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">DataStore</span>
+                    <span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span> <span class="nx">oldData</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">)</span>
+
+                        <span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+                    <span class="p">})</span>
+                    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">)</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">})</span>
+
+    <span class="kr">const</span> <span class="nx">onRowUpdate</span> <span class="o">=</span> <span class="p">(</span><span class="nx">newData</span>: <span class="kt">any</span><span class="p">,</span> <span class="nx">oldData</span>: <span class="kt">any</span><span class="p">)</span> <span class="o">=&gt;</span>
+        <span class="k">new</span> <span class="nx">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">DataStore</span>
+                    <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">,</span> <span class="nx">oldData</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">original</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="kr">const</span> <span class="nx">updated</span> <span class="o">=</span> <span class="nx">Vehicle</span><span class="p">.</span><span class="nx">copyOf</span><span class="p">(</span><span class="nx">original</span><span class="p">,</span> <span class="nx">updated</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="nx">updated</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="nx">newData</span><span class="p">.</span><span class="nx">make</span>
+                            <span class="nx">updated</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="nx">newData</span><span class="p">.</span><span class="nx">model</span>
+                            <span class="nx">updated</span><span class="p">.</span><span class="nx">mileage</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">newData</span><span class="p">.</span><span class="nx">mileage</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+                        <span class="p">});</span>
+
+                        <span class="k">return</span> <span class="nx">DataStore</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">updated</span><span class="p">);</span>
+                    <span class="p">})</span>
+                    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">)</span>
+
+                        <span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+                    <span class="p">})</span>
+                    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">reject</span><span class="p">)</span>
+            <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="p">})</span>
+
+    <span class="kr">const</span> <span class="nx">editable</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">onRowAdd</span><span class="p">,</span>
+        <span class="nx">onRowDelete</span><span class="p">,</span>
+        <span class="nx">onRowUpdate</span>
+    <span class="p">}</span>
+
+    <span class="kr">const</span> <span class="nx">localization</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">pagination</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">labelDisplayedRows</span><span class="o">:</span> <span class="s1">&#39;{from}-{to}&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kr">const</span> <span class="nx">options</span>: <span class="kt">Options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">showTitle</span>: <span class="kt">false</span><span class="p">,</span>
+        <span class="nx">showFirstLastPageButtons</span>: <span class="kt">false</span><span class="p">,</span>
+        <span class="nx">paginationType</span><span class="o">:</span> <span class="s2">&quot;stepped&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">container</span> <span class="nx">spacing</span><span class="o">=</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Grid</span> <span class="nx">item</span> <span class="nx">xs</span><span class="o">=</span><span class="p">{</span><span class="mi">12</span><span class="p">}</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">MaterialTable</span>
+                    <span class="nx">tableRef</span><span class="o">=</span><span class="p">{</span><span class="nx">tableRef</span><span class="p">}</span>
+                    <span class="nx">data</span><span class="o">=</span><span class="p">{</span><span class="nx">data</span><span class="p">}</span>
+                    <span class="nx">columns</span><span class="o">=</span><span class="p">{</span><span class="nx">columns</span><span class="p">}</span>
+                    <span class="nx">editable</span><span class="o">=</span><span class="p">{</span><span class="nx">editable</span><span class="p">}</span>
+                    <span class="nx">localization</span><span class="o">=</span><span class="p">{</span><span class="nx">localization</span><span class="p">}</span>
+                    <span class="nx">options</span><span class="o">=</span><span class="p">{</span><span class="nx">options</span><span class="p">}</span>
+                <span class="o">/&gt;</span>
+            <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Grid&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Vehicles</span><span class="p">;</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../connecttobackend/" title="Connect to the back-end" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Connect to the back-end
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../releasenotes/" title="Release notes" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Release notes
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 Stephen Harrison
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

@@ -197,6 +197,19 @@
   
     <li class="md-tabs__item">
       
+        <a href="../awesome-table/" class="md-tabs__link">
+          4. Make the table great
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
         <a href="../releasenotes/" class="md-tabs__link">
           Fine print
         </a>
@@ -493,8 +506,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-datastore-to-query-the-data" class="md-nav__link">
-    Use DataStore to query the data
+  <a href="#using-datastore" class="md-nav__link">
+    Using DataStore
   </a>
   
 </li>
@@ -549,13 +562,55 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
+      4. Make the table great
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="4. Make the table great" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        4. Make the table great
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../awesome-table/" title="Integrate Amplify" class="md-nav__link">
+      Integrate Amplify
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
       Fine print
       <span class="md-nav__icon md-icon">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
       </span>
     </label>
     <nav class="md-nav" aria-label="Fine print" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         <span class="md-nav__icon md-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
         </span>
@@ -631,8 +686,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-datastore-to-query-the-data" class="md-nav__link">
-    Use DataStore to query the data
+  <a href="#using-datastore" class="md-nav__link">
+    Using DataStore
   </a>
   
 </li>
@@ -728,21 +783,37 @@ amplify push
 
 <h2 id="use-the-datastore-api-in-vehiclestsx">Use the DataStore API in <code>Vehicles.tsx</code><a class="headerlink" href="#use-the-datastore-api-in-vehiclestsx" title="Permanent link">&para;</a></h2>
 <p>The <code>DataStore</code> API is an alternative to using the raw GraphQL API, which can get a bit fiddly to get right at first.</p>
-<p>Now import it.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This goes in <code>Vehicles.tsx</code>.</p>
 </div>
+<h2 id="using-datastore">Using <code>DataStore</code><a class="headerlink" href="#using-datastore" title="Permanent link">&para;</a></h2>
+<p>Import it.</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">DataStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@aws-amplify/datastore&#39;</span><span class="p">;</span>
 </code></pre></div>
 
 
-<h2 id="use-datastore-to-query-the-data">Use <code>DataStore</code> to query the data<a class="headerlink" href="#use-datastore-to-query-the-data" title="Permanent link">&para;</a></h2>
+<p><code>DataStore</code> functions return <code>Promise</code>s. So we have to handle that in <code>addVehicle()</code> where we save a vehicle, now using <code>DataStore.save()</code>.</p>
+<div class="codehilite"><pre><span></span><code>    <span class="kd">function</span> <span class="nx">addVehicle() {</span>
+        <span class="kr">const</span> <span class="nx">make</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">();</span>
+        <span class="kr">const</span> <span class="nx">model</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">();</span>
+        <span class="kr">const</span> <span class="nx">mileage</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100000</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="kr">const</span> <span class="nx">vehicle</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">({</span> <span class="nx">make</span><span class="p">,</span> <span class="nx">model</span><span class="p">,</span> <span class="nx">mileage</span> <span class="p">});</span>
+
+        <span class="nx">DataStore</span>
+            <span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">vehicle</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+
+<p>That's also true for <code>DataStore.query()</code>, the way we're going to fetch data now.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The default query is all objects. We can supply predicates and pagination details in the query. We'll get to that when we use <a href="https://material-table.com/#/">https://material-table.com/#/</a>, which lazy loads as it paginates.</p>
 </div>
-<p>We use <code>setVehicles(...)</code> as before. But this time with the results of the DataStore query. Here's that function.</p>
+<p>We use the <code>setVehicles(...)</code> React hook as before. But this time with the results of the DataStore query. Here's that function.</p>
 <div class="codehilite"><pre><span></span><code>    <span class="kd">function</span> <span class="nx">fetchAll() {</span>
         <span class="nx">DataStore</span>
             <span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">Vehicle</span><span class="p">)</span>
@@ -830,7 +901,7 @@ amplify push
 <p>You just wrote Google docs for cars. </p>
 <h2 id="the-upshot">The upshot<a class="headerlink" href="#the-upshot" title="Permanent link">&para;</a></h2>
 <p>We configured Amplify. We created an Amplify DataSource observer and subscribed to events from it. We learned just a little about <code>useEffect()</code> and glued that all together. We were a bit astonished at what that allowed us to do if we're being honest.</p>
-<p>The complete <code>Vehicles.txt</code> is</p>
+<p>The complete <code>Vehicles.tsx</code> is</p>
 <div class="codehilite"><pre><span></span><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Button</span><span class="p">,</span> <span class="nx">Table</span><span class="p">,</span> <span class="nx">TableHead</span><span class="p">,</span> <span class="nx">TableRow</span><span class="p">,</span> <span class="nx">TableCell</span><span class="p">,</span> <span class="nx">TableBody</span><span class="p">,</span> <span class="nx">Grid</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@material-ui/core&#39;</span><span class="p">;</span>
 <span class="kr">import</span> <span class="p">{</span> <span class="nx">Vehicle</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./models&#39;</span><span class="p">;</span>
@@ -869,7 +940,10 @@ amplify push
         <span class="kr">const</span> <span class="nx">mileage</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100000</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="kr">const</span> <span class="nx">vehicle</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vehicle</span><span class="p">({</span> <span class="nx">make</span><span class="p">,</span> <span class="nx">model</span><span class="p">,</span> <span class="nx">mileage</span> <span class="p">});</span>
 
-        <span class="nx">DataStore</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">vehicle</span><span class="p">);</span>
+        <span class="nx">DataStore</span>
+            <span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">vehicle</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+            <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="kd">function</span> <span class="nx">onClick</span><span class="p">(</span><span class="nx">event</span>: <span class="kt">React.MouseEvent</span><span class="p">)</span> <span class="p">{</span>
@@ -944,13 +1018,13 @@ amplify push
           </a>
         
         
-          <a href="../releasenotes/" title="Release notes" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../awesome-table/" title="Integrate Amplify" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Release notes
+                Integrate Amplify
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
