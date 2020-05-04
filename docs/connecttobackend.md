@@ -47,21 +47,39 @@ Amplify.configure(amplify_configuration);
 
 The `DataStore` API is an alternative to using the raw GraphQL API, which can get a bit fiddly to get right at first.
 
-Now import it.
-
 !!! note
     This goes in `Vehicles.tsx`.
+
+## Using `DataStore`
+
+Import it.
 
 ```typescript
 import { DataStore } from '@aws-amplify/datastore';
 ```
 
-## Use `DataStore` to query the data
+`DataStore` functions return `Promise`s. So we have to handle that in `addVehicle()` where we save a vehicle, now using `DataStore.save()`.
+
+```typescript
+    function addVehicle() {
+        const make = uuid();
+        const model = uuid();
+        const mileage = Math.floor(Math.random() * 100000) + 1
+        const vehicle = new Vehicle({ make, model, mileage });
+
+        DataStore
+            .save(vehicle)
+            .then(console.log)
+            .catch(console.error);
+    }
+```
+
+That's also true for `DataStore.query()`, the way we're going to fetch data now.
 
 !!! note
     The default query is all objects. We can supply predicates and pagination details in the query. We'll get to that when we use <https://material-table.com/#/>, which lazy loads as it paginates.
 
-We use `setVehicles(...)` as before. But this time with the results of the DataStore query. Here's that function.
+We use the `setVehicles(...)` React hook as before. But this time with the results of the DataStore query. Here's that function.
 
 ```typescript
     function fetchAll() {
@@ -145,7 +163,7 @@ You just wrote Google docs for cars.
 
 We configured Amplify. We created an Amplify DataSource observer and subscribed to events from it. We learned just a little about `useEffect()` and glued that all together. We were a bit astonished at what that allowed us to do if we're being honest.
 
-The complete `Vehicles.txt` is
+The complete `Vehicles.tsx` is
 
 ```typescript
 import React, { useEffect } from 'react';
@@ -186,7 +204,10 @@ function Vehicles() {
         const mileage = Math.floor(Math.random() * 100000) + 1
         const vehicle = new Vehicle({ make, model, mileage });
 
-        DataStore.save(vehicle);
+        DataStore
+            .save(vehicle)
+            .then(console.log)
+            .catch(console.error);
     }
 
     function onClick(event: React.MouseEvent) {

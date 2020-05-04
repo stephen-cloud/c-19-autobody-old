@@ -60,6 +60,8 @@ nav:
         - Prepare the UI: prepare-ui.md
         - Add a table: add-table-view.md
         - Connect to the back-end: connecttobackend.md
+    - 4. Make the table great:
+        - Integrate Amplify: awesome-table.md 
     - Fine print: 
         - Release notes: releasenotes.md
         - License: license.md
